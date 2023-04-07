@@ -1,0 +1,6 @@
+[submodule "fasm"]
+	path = fasm
+	url = https://github.com/tgrysztar/fasm
+[submodule "scintilla"]
+	path = scintilla
+	url = https://github.com/missdeer/scintilla
