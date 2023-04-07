@@ -1,4 +1,4 @@
-#include "General.h"
+п»ї#include "General.h"
 #include <Windows.h>
 #include <string>
 
@@ -7,8 +7,8 @@ using namespace std;
 ReadingIniFile::ReadingIniFile(void)
 {
 	char path[MAX_PATH] = {0};
-	GetModuleFileName(NULL, path, MAX_PATH); /* Получаем полный путь к исполняемому файлу, т.к. в той же папке лежит prototype.h */
-	path_to_the_jaeeditor = path; /* Полученный путь заносим в string, что бы проще было получить только путь, без .exe */
+	GetModuleFileName(NULL, path, MAX_PATH); /* РџРѕР»СѓС‡Р°РµРј РїРѕР»РЅС‹Р№ РїСѓС‚СЊ Рє РёСЃРїРѕР»РЅСЏРµРјРѕРјСѓ С„Р°Р№Р»Сѓ, С‚.Рє. РІ С‚РѕР№ Р¶Рµ РїР°РїРєРµ Р»РµР¶РёС‚ prototype.h */
+	path_to_the_jaeeditor = path; /* РџРѕР»СѓС‡РµРЅРЅС‹Р№ РїСѓС‚СЊ Р·Р°РЅРѕСЃРёРј РІ string, С‡С‚Рѕ Р±С‹ РїСЂРѕС‰Рµ Р±С‹Р»Рѕ РїРѕР»СѓС‡РёС‚СЊ С‚РѕР»СЊРєРѕ РїСѓС‚СЊ, Р±РµР· .exe */
 	int posit = path_to_the_jaeeditor.rfind("\\");
 	path_to_the_jaeeditor.erase(posit + 1,path_to_the_jaeeditor.length());
 	path_to_the_jaeeditor += "settings.ini";	

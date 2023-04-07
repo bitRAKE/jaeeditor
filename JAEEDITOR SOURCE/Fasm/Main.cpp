@@ -1,4 +1,4 @@
-#include <Windows.h>
+п»ї#include <Windows.h>
 HINSTANCE hRTFLib = LoadLibrary("RICHED32.DLL");
 HINSTANCE hIns = LoadLibrary("SciLexer.DLL"); 
 #include <D:\\Desktop\\Fasm\\Fasm\\scintilla\\include\\SciLexer.h>
@@ -77,20 +77,20 @@ struct tabcounter {
 	HWND hwndScintilla, Output;
 	int strcounter;
 	TC_ITEM tabitem;
-	string BufferName; /* Имя файла с расширением */
-	string FileInfo; /* Полный путь к файлу */
+	string BufferName; /* РРјСЏ С„Р°Р№Р»Р° СЃ СЂР°СЃС€РёСЂРµРЅРёРµРј */
+	string FileInfo; /* РџРѕР»РЅС‹Р№ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ */
 	vector<int> break_points;
 };
 tabcounter tabNum;
-vector<tabcounter> TabNumber; /* Контейнер для содержимого вкладок */
+vector<tabcounter> TabNumber; /* РљРѕРЅС‚РµР№РЅРµСЂ РґР»СЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РІРєР»Р°РґРѕРє */
 
 vector<HTREEITEM> ExpState;
 vector<HTREEITEM> htreeitem;
 vector<string> NameSelInclude;
 
-string api2; /* Строка содержит список функций для автозавершения */
+string api2; /* РЎС‚СЂРѕРєР° СЃРѕРґРµСЂР¶РёС‚ СЃРїРёСЃРѕРє С„СѓРЅРєС†РёР№ РґР»СЏ Р°РІС‚РѕР·Р°РІРµСЂС€РµРЅРёСЏ */
 vector<string> api2_name;
-vector<string> prototype_api2; /* Вектор содержит прототипы функций */
+vector<string> prototype_api2; /* Р’РµРєС‚РѕСЂ СЃРѕРґРµСЂР¶РёС‚ РїСЂРѕС‚РѕС‚РёРїС‹ С„СѓРЅРєС†РёР№ */
 
 const int MARK_BOOKMARK = 24;
 
@@ -103,19 +103,19 @@ struct AddInc {
 	string pathinclude;
 };
 AddInc NameAddInc;
-vector<AddInc> InfInc; /* Контейнер для всех возможных инклудов, содержит имя инклуда и путь к нему */
+vector<AddInc> InfInc; /* РљРѕРЅС‚РµР№РЅРµСЂ РґР»СЏ РІСЃРµС… РІРѕР·РјРѕР¶РЅС‹С… РёРЅРєР»СѓРґРѕРІ, СЃРѕРґРµСЂР¶РёС‚ РёРјСЏ РёРЅРєР»СѓРґР° Рё РїСѓС‚СЊ Рє РЅРµРјСѓ */
 
 struct IncludesActiveTab {
-	string NameIncludeWithExten; /* Имя инклуда с расширением */
-	string PathToTheInclude; /* Путь к инклуду */
-	int ID; /* Идентификатор, если ID равен 1, то у инклуда есть родительская папка, если 2, 
-				инклуд лежит либо рядом с исходником, либо в папке с компилятором, либо в корне папки INCLUDE */
+	string NameIncludeWithExten; /* РРјСЏ РёРЅРєР»СѓРґР° СЃ СЂР°СЃС€РёСЂРµРЅРёРµРј */
+	string PathToTheInclude; /* РџСѓС‚СЊ Рє РёРЅРєР»СѓРґСѓ */
+	int ID; /* РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ, РµСЃР»Рё ID СЂР°РІРµРЅ 1, С‚Рѕ Сѓ РёРЅРєР»СѓРґР° РµСЃС‚СЊ СЂРѕРґРёС‚РµР»СЊСЃРєР°СЏ РїР°РїРєР°, РµСЃР»Рё 2, 
+				РёРЅРєР»СѓРґ Р»РµР¶РёС‚ Р»РёР±Рѕ СЂСЏРґРѕРј СЃ РёСЃС…РѕРґРЅРёРєРѕРј, Р»РёР±Рѕ РІ РїР°РїРєРµ СЃ РєРѕРјРїРёР»СЏС‚РѕСЂРѕРј, Р»РёР±Рѕ РІ РєРѕСЂРЅРµ РїР°РїРєРё INCLUDE */
 };
 IncludesActiveTab Includes_Active_Tab;
-vector<IncludesActiveTab> InvolvedInclude; /* Контейнер содержит задействованные инклуды */
+vector<IncludesActiveTab> InvolvedInclude; /* РљРѕРЅС‚РµР№РЅРµСЂ СЃРѕРґРµСЂР¶РёС‚ Р·Р°РґРµР№СЃС‚РІРѕРІР°РЅРЅС‹Рµ РёРЅРєР»СѓРґС‹ */
 
 struct DataHtreeitem {
-	int Line; /* Номер строки содержащей элемент из списка */
+	int Line; /* РќРѕРјРµСЂ СЃС‚СЂРѕРєРё СЃРѕРґРµСЂР¶Р°С‰РµР№ СЌР»РµРјРµРЅС‚ РёР· СЃРїРёСЃРєР° */
 	string NameItem;
 };
 DataHtreeitem DHtreeitem;
@@ -126,7 +126,7 @@ struct iItemTR {
 	int iState;
 };
 iItemTR ItemTR;
-vector<iItemTR> Name_Labels; /* Информация о состоянии элемента и его имя */
+vector<iItemTR> Name_Labels; /* РРЅС„РѕСЂРјР°С†РёСЏ Рѕ СЃРѕСЃС‚РѕСЏРЅРёРё СЌР»РµРјРµРЅС‚Р° Рё РµРіРѕ РёРјСЏ */
 vector<HTREEITEM> iHTR;
 
 HTREEITEM Inc = (HTREEITEM)TVI_FIRST;
@@ -139,11 +139,11 @@ static const int WINDOW_ID = 900;
 const char* pCallTipNextWord = NULL;
 const char* pCallTipCurDesc = NULL;
 
-RECT rcClient; /* Для ParentWindow */
-RECT rcTabControl; /* Для TabControl */
-RECT rcREdit; /* Для RichEdit'a */
-RECT rcTrV; /* Для TreeView */
-RECT rctab; /* Координаты активной вкладки */
+RECT rcClient; /* Р”Р»СЏ ParentWindow */
+RECT rcTabControl; /* Р”Р»СЏ TabControl */
+RECT rcREdit; /* Р”Р»СЏ RichEdit'a */
+RECT rcTrV; /* Р”Р»СЏ TreeView */
+RECT rctab; /* РљРѕРѕСЂРґРёРЅР°С‚С‹ Р°РєС‚РёРІРЅРѕР№ РІРєР»Р°РґРєРё */
 
 Wnd *ParentWindow, *TabControl, *StatusBar, *TabControl_TrV, *AllInc_TrV;
 Wnd *HwndScintilla, *Output_N, *TreeView_N, *TreeView_R;
@@ -154,34 +154,34 @@ OperationsOnSelectedLines operLines;
 
 TC_ITEM tab_2;
 
-TextRange tr; /* Структура хранит в себе информацию о положении слова, которое вызвало автозавершение */
+TextRange tr; /* РЎС‚СЂСѓРєС‚СѓСЂР° С…СЂР°РЅРёС‚ РІ СЃРµР±Рµ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РїРѕР»РѕР¶РµРЅРёРё СЃР»РѕРІР°, РєРѕС‚РѕСЂРѕРµ РІС‹Р·РІР°Р»Рѕ Р°РІС‚РѕР·Р°РІРµСЂС€РµРЅРёРµ */
 
 int iTreeView; /* folder/inc */
-int iTray = NULL; /* Состояние трея */
-int tN = NULL; /* Счётчик вкладок */
+int iTray = NULL; /* РЎРѕСЃС‚РѕСЏРЅРёРµ С‚СЂРµСЏ */
+int tN = NULL; /* РЎС‡С‘С‚С‡РёРє РІРєР»Р°РґРѕРє */
 int tmp = NULL;
 int tabN;
-int counter; /* В эту переменную заносим номер активной вкладки */
-int iMemControl = 0; /* для WM_SIZE. Переменная для проверки. Пока переменная равна NULL перерисовки не будет */
+int counter; /* Р’ СЌС‚Сѓ РїРµСЂРµРјРµРЅРЅСѓСЋ Р·Р°РЅРѕСЃРёРј РЅРѕРјРµСЂ Р°РєС‚РёРІРЅРѕР№ РІРєР»Р°РґРєРё */
+int iMemControl = 0; /* РґР»СЏ WM_SIZE. РџРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РїСЂРѕРІРµСЂРєРё. РџРѕРєР° РїРµСЂРµРјРµРЅРЅР°СЏ СЂР°РІРЅР° NULL РїРµСЂРµСЂРёСЃРѕРІРєРё РЅРµ Р±СѓРґРµС‚ */
 int forVerification;
 int iInclude = 0;
-int i_; /* Номер элемента для удаления */
-int Flag_for_the_TreeView = 0; /* Флаг равен единице, если открыт поток обновления дерева */
-int Flag_for_the_syntax_highlight = 0; /* Флаг равен единице, если открыт поток подсветки синтаксиса */
+int i_; /* РќРѕРјРµСЂ СЌР»РµРјРµРЅС‚Р° РґР»СЏ СѓРґР°Р»РµРЅРёСЏ */
+int Flag_for_the_TreeView = 0; /* Р¤Р»Р°Рі СЂР°РІРµРЅ РµРґРёРЅРёС†Рµ, РµСЃР»Рё РѕС‚РєСЂС‹С‚ РїРѕС‚РѕРє РѕР±РЅРѕРІР»РµРЅРёСЏ РґРµСЂРµРІР° */
+int Flag_for_the_syntax_highlight = 0; /* Р¤Р»Р°Рі СЂР°РІРµРЅ РµРґРёРЅРёС†Рµ, РµСЃР»Рё РѕС‚РєСЂС‹С‚ РїРѕС‚РѕРє РїРѕРґСЃРІРµС‚РєРё СЃРёРЅС‚Р°РєСЃРёСЃР° */
 int Flag_for_the_Autocompletion = 0;
 
-char buf_in_out[30000]={0}; /* Буфер для вывода */
+char buf_in_out[30000]={0}; /* Р‘СѓС„РµСЂ РґР»СЏ РІС‹РІРѕРґР° */
 char buff[10] = {0};
-char StrColArray[100]; /* в этот массив будет помещатся все выводимые значения Str и Col в StatusBar  */
+char StrColArray[100]; /* РІ СЌС‚РѕС‚ РјР°СЃСЃРёРІ Р±СѓРґРµС‚ РїРѕРјРµС‰Р°С‚СЃСЏ РІСЃРµ РІС‹РІРѕРґРёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ Str Рё Col РІ StatusBar  */
 
 string TitleBuf, go_to_the_exe;
 string csTemp = "";
-string Directory; /* Директория для поиска во вложенных папках */
+string Directory; /* Р”РёСЂРµРєС‚РѕСЂРёСЏ РґР»СЏ РїРѕРёСЃРєР° РІРѕ РІР»РѕР¶РµРЅРЅС‹С… РїР°РїРєР°С… */
 string OriginalDirectory;
-string path_to_the_include; /* Директория для поиска  */
-string added_to_the_source_code; /* Текст который будет добавлен в исходный код (include "folder\*.inc" or include "*.inc") */
+string path_to_the_include; /* Р”РёСЂРµРєС‚РѕСЂРёСЏ РґР»СЏ РїРѕРёСЃРєР°  */
+string added_to_the_source_code; /* РўРµРєСЃС‚ РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РґРѕР±Р°РІР»РµРЅ РІ РёСЃС…РѕРґРЅС‹Р№ РєРѕРґ (include "folder\*.inc" or include "*.inc") */
 
-/* Имена инклудов активной вкладки, которые впоследствии могут быть исключены */
+/* РРјРµРЅР° РёРЅРєР»СѓРґРѕРІ Р°РєС‚РёРІРЅРѕР№ РІРєР»Р°РґРєРё, РєРѕС‚РѕСЂС‹Рµ РІРїРѕСЃР»РµРґСЃС‚РІРёРё РјРѕРіСѓС‚ Р±С‹С‚СЊ РёСЃРєР»СЋС‡РµРЅС‹ */
 string del_to_the_source_code; /* include "folder\*.inc" */
 string del_to_the_source_code_2; /* include "*.inc" */
 string del_to_the_source_code_3; /* include 'folder\*.inc' */
@@ -190,7 +190,7 @@ string del_to_the_source_code_5; /* include 'folder/*.inc' */
 string del_to_the_source_code_6; /* include 'folder/*.inc' */
 /*****************************************************************************/
 
-/* Структуры для добавления элементов в TreeView */
+/* РЎС‚СЂСѓРєС‚СѓСЂС‹ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ РІ TreeView */
 TV_INSERTSTRUCT insItem;
 TVITEM tvitem;
 TVITEM iItem;
@@ -198,15 +198,15 @@ TV_INSERTSTRUCT isItem;
 
 TVITEM itemEx;
 
-Sci_TextToFind fsci; /* Поиск */
+Sci_TextToFind fsci; /* РџРѕРёСЃРє */
 
 CHARFORMAT cF;
 CHARFORMAT chd;
-CHARFORMAT forGETCHARFORMAT; /* Для проверки цвета выделенного символа, при покраске */
-CHARFORMAT2 chd_2; /* Для подсветки выделенного слова по всему тексту */
+CHARFORMAT forGETCHARFORMAT; /* Р”Р»СЏ РїСЂРѕРІРµСЂРєРё С†РІРµС‚Р° РІС‹РґРµР»РµРЅРЅРѕРіРѕ СЃРёРјРІРѕР»Р°, РїСЂРё РїРѕРєСЂР°СЃРєРµ */
+CHARFORMAT2 chd_2; /* Р”Р»СЏ РїРѕРґСЃРІРµС‚РєРё РІС‹РґРµР»РµРЅРЅРѕРіРѕ СЃР»РѕРІР° РїРѕ РІСЃРµРјСѓ С‚РµРєСЃС‚Сѓ */
 
 CHARRANGE poscur;
-CHARRANGE selchar; /* Для подсветки выделенного слова по всему тексту */
+CHARRANGE selchar; /* Р”Р»СЏ РїРѕРґСЃРІРµС‚РєРё РІС‹РґРµР»РµРЅРЅРѕРіРѕ СЃР»РѕРІР° РїРѕ РІСЃРµРјСѓ С‚РµРєСЃС‚Сѓ */
 
 POINT poscaret;
 POINT pt;
@@ -222,43 +222,43 @@ void FileSave(); /* /File/Save/ */
 void FilePrint(); /* /File/Print/ */
 int FileSaveAs(); /* /File/Save as/ */
 void FileSaveALL(int to_rem); /* /File/Save all/ */
-void FileOpen(); /* Функция открывает файл */
-int FileClose(WPARAM wPar); /* Функция закрывает активную вкладку */
-void DLGSAVEFILE(); /* Функция вызывает диалог сохранения файла */
-void DLGOPENFILE(); /* Функция вызывает диалог открытия файла */
-void CloseTab(); /*Функция удаляет активную вкладку и её содержимое.В том чесле удаляется элемент вектора соответствующий
-				 номеру удалённой вкладки. Фокус переводится на вкладку с индексом [0].*/
-void NewTab(); /* Функция создаёт новую вкладку, переводит на неё фокус и показывает содержимое этой вкладки */
-void FileName(); /* Функция получает имя файла с его расширением из пути к файлу */
-void InStatusBar(); /* Функция вывода в StatusBar данных */
-int PrintFileToPrinter(char* sFileName); /* Функция отправляет открытый файл на печать, на принтер по умолчанию */
-void Compile(); /* Компиляция */
-void ShowContextMenu(); /* Показывает контекстное меню */
-void SetInvVar(); /* Функция создаёт новую переменную окружения для включений*/
-void AllIncludes(); /* Всё существующие включения */
-void FindFilesInclude(string DirectorySearch, LPCSTR SearchWord ,HTREEITEM Folders); /* DirectorySearch - директория для поиска, SearchWord -что ищем, Folders - дескриптор папки куда добавлять найденное */
-HTREEITEM InsItemTreeView(HTREEITEM htreeitem,string tempbuf); /* Добавление нового элемента в TreeView */
+void FileOpen(); /* Р¤СѓРЅРєС†РёСЏ РѕС‚РєСЂС‹РІР°РµС‚ С„Р°Р№Р» */
+int FileClose(WPARAM wPar); /* Р¤СѓРЅРєС†РёСЏ Р·Р°РєСЂС‹РІР°РµС‚ Р°РєС‚РёРІРЅСѓСЋ РІРєР»Р°РґРєСѓ */
+void DLGSAVEFILE(); /* Р¤СѓРЅРєС†РёСЏ РІС‹Р·С‹РІР°РµС‚ РґРёР°Р»РѕРі СЃРѕС…СЂР°РЅРµРЅРёСЏ С„Р°Р№Р»Р° */
+void DLGOPENFILE(); /* Р¤СѓРЅРєС†РёСЏ РІС‹Р·С‹РІР°РµС‚ РґРёР°Р»РѕРі РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р° */
+void CloseTab(); /*Р¤СѓРЅРєС†РёСЏ СѓРґР°Р»СЏРµС‚ Р°РєС‚РёРІРЅСѓСЋ РІРєР»Р°РґРєСѓ Рё РµС‘ СЃРѕРґРµСЂР¶РёРјРѕРµ.Р’ С‚РѕРј С‡РµСЃР»Рµ СѓРґР°Р»СЏРµС‚СЃСЏ СЌР»РµРјРµРЅС‚ РІРµРєС‚РѕСЂР° СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№
+				 РЅРѕРјРµСЂСѓ СѓРґР°Р»С‘РЅРЅРѕР№ РІРєР»Р°РґРєРё. Р¤РѕРєСѓСЃ РїРµСЂРµРІРѕРґРёС‚СЃСЏ РЅР° РІРєР»Р°РґРєСѓ СЃ РёРЅРґРµРєСЃРѕРј [0].*/
+void NewTab(); /* Р¤СѓРЅРєС†РёСЏ СЃРѕР·РґР°С‘С‚ РЅРѕРІСѓСЋ РІРєР»Р°РґРєСѓ, РїРµСЂРµРІРѕРґРёС‚ РЅР° РЅРµС‘ С„РѕРєСѓСЃ Рё РїРѕРєР°Р·С‹РІР°РµС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕР№ РІРєР»Р°РґРєРё */
+void FileName(); /* Р¤СѓРЅРєС†РёСЏ РїРѕР»СѓС‡Р°РµС‚ РёРјСЏ С„Р°Р№Р»Р° СЃ РµРіРѕ СЂР°СЃС€РёСЂРµРЅРёРµРј РёР· РїСѓС‚Рё Рє С„Р°Р№Р»Сѓ */
+void InStatusBar(); /* Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° РІ StatusBar РґР°РЅРЅС‹С… */
+int PrintFileToPrinter(char* sFileName); /* Р¤СѓРЅРєС†РёСЏ РѕС‚РїСЂР°РІР»СЏРµС‚ РѕС‚РєСЂС‹С‚С‹Р№ С„Р°Р№Р» РЅР° РїРµС‡Р°С‚СЊ, РЅР° РїСЂРёРЅС‚РµСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ */
+void Compile(); /* РљРѕРјРїРёР»СЏС†РёСЏ */
+void ShowContextMenu(); /* РџРѕРєР°Р·С‹РІР°РµС‚ РєРѕРЅС‚РµРєСЃС‚РЅРѕРµ РјРµРЅСЋ */
+void SetInvVar(); /* Р¤СѓРЅРєС†РёСЏ СЃРѕР·РґР°С‘С‚ РЅРѕРІСѓСЋ РїРµСЂРµРјРµРЅРЅСѓСЋ РѕРєСЂСѓР¶РµРЅРёСЏ РґР»СЏ РІРєР»СЋС‡РµРЅРёР№*/
+void AllIncludes(); /* Р’СЃС‘ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРµ РІРєР»СЋС‡РµРЅРёСЏ */
+void FindFilesInclude(string DirectorySearch, LPCSTR SearchWord ,HTREEITEM Folders); /* DirectorySearch - РґРёСЂРµРєС‚РѕСЂРёСЏ РґР»СЏ РїРѕРёСЃРєР°, SearchWord -С‡С‚Рѕ РёС‰РµРј, Folders - РґРµСЃРєСЂРёРїС‚РѕСЂ РїР°РїРєРё РєСѓРґР° РґРѕР±Р°РІР»СЏС‚СЊ РЅР°Р№РґРµРЅРЅРѕРµ */
+HTREEITEM InsItemTreeView(HTREEITEM htreeitem,string tempbuf); /* Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РІ TreeView */
 HTREEITEM InsItemTreeView_Num2(HTREEITEM htreeitem,string tempbuf);
-void UsedIncludes(); /* Отображает в дереве все инклуды привязанные к открытому файлу */
-void SearchInDirectory(string DirectorySearch); /* Поиск в определённой директории */
-void OpeningFile(string File_Path); /* Открывает файл, принимает путь к файлу */
-void DelNew(); /* Освобождение памяти */
-void Added_To_The_Source_Code(string Name_Added_Include); /* Добавление Include в исходный код (include "folder\*.inc" or include "*.inc") */
-void Remove_From_Source_Code(string str1, string str2, string str3, string str4, string str5, string str6, int num1); /* Удаление (include "folder\*.inc"
-																													  or include "*.inc") из исходного кода */
-int Overlap(string path_); /* Функция проверяет на совпадение пути файла который пользователь собирается
-							открыть с уже открытыми, если будет совпадения файл открыт не будет */
+void UsedIncludes(); /* РћС‚РѕР±СЂР°Р¶Р°РµС‚ РІ РґРµСЂРµРІРµ РІСЃРµ РёРЅРєР»СѓРґС‹ РїСЂРёРІСЏР·Р°РЅРЅС‹Рµ Рє РѕС‚РєСЂС‹С‚РѕРјСѓ С„Р°Р№Р»Сѓ */
+void SearchInDirectory(string DirectorySearch); /* РџРѕРёСЃРє РІ РѕРїСЂРµРґРµР»С‘РЅРЅРѕР№ РґРёСЂРµРєС‚РѕСЂРёРё */
+void OpeningFile(string File_Path); /* РћС‚РєСЂС‹РІР°РµС‚ С„Р°Р№Р», РїСЂРёРЅРёРјР°РµС‚ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ */
+void DelNew(); /* РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё */
+void Added_To_The_Source_Code(string Name_Added_Include); /* Р”РѕР±Р°РІР»РµРЅРёРµ Include РІ РёСЃС…РѕРґРЅС‹Р№ РєРѕРґ (include "folder\*.inc" or include "*.inc") */
+void Remove_From_Source_Code(string str1, string str2, string str3, string str4, string str5, string str6, int num1); /* РЈРґР°Р»РµРЅРёРµ (include "folder\*.inc"
+																													  or include "*.inc") РёР· РёСЃС…РѕРґРЅРѕРіРѕ РєРѕРґР° */
+int Overlap(string path_); /* Р¤СѓРЅРєС†РёСЏ РїСЂРѕРІРµСЂСЏРµС‚ РЅР° СЃРѕРІРїР°РґРµРЅРёРµ РїСѓС‚Рё С„Р°Р№Р»Р° РєРѕС‚РѕСЂС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃРѕР±РёСЂР°РµС‚СЃСЏ
+							РѕС‚РєСЂС‹С‚СЊ СЃ СѓР¶Рµ РѕС‚РєСЂС‹С‚С‹РјРё, РµСЃР»Рё Р±СѓРґРµС‚ СЃРѕРІРїР°РґРµРЅРёСЏ С„Р°Р№Р» РѕС‚РєСЂС‹С‚ РЅРµ Р±СѓРґРµС‚ */
 
-DWORD WINAPI Thread_for_the_TreeView(LPVOID lpVoid); /*Поток для обновления дерева */
+DWORD WINAPI Thread_for_the_TreeView(LPVOID lpVoid); /*РџРѕС‚РѕРє РґР»СЏ РѕР±РЅРѕРІР»РµРЅРёСЏ РґРµСЂРµРІР° */
 
-BOOL TrayMessage (HWND hDlg, DWORD dwMessage, UINT uID, HICON hIcon, PSTR pszTip); /* Функция помещает иконку приложения в трей */
+BOOL TrayMessage (HWND hDlg, DWORD dwMessage, UINT uID, HICON hIcon, PSTR pszTip); /* Р¤СѓРЅРєС†РёСЏ РїРѕРјРµС‰Р°РµС‚ РёРєРѕРЅРєСѓ РїСЂРёР»РѕР¶РµРЅРёСЏ РІ С‚СЂРµР№ */
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
-void Syntax_Highlight(); /* подсветка синтаксиса */
+void Syntax_Highlight(); /* РїРѕРґСЃРІРµС‚РєР° СЃРёРЅС‚Р°РєСЃРёСЃР° */
 
-BOOL CALLBACK MainDlgProc( HWND wnd, UINT msg, WPARAM wParam,LPARAM lParam ); /* Обработчик для диалогов поиска */
-void FindDlg(int EDIT, HWND DlghWnd); /* Поиск */
-void Find_Replace(); /* Поиск и замена текста для кнопки Rplace all */
+BOOL CALLBACK MainDlgProc( HWND wnd, UINT msg, WPARAM wParam,LPARAM lParam ); /* РћР±СЂР°Р±РѕС‚С‡РёРє РґР»СЏ РґРёР°Р»РѕРіРѕРІ РїРѕРёСЃРєР° */
+void FindDlg(int EDIT, HWND DlghWnd); /* РџРѕРёСЃРє */
+void Find_Replace(); /* РџРѕРёСЃРє Рё Р·Р°РјРµРЅР° С‚РµРєСЃС‚Р° РґР»СЏ РєРЅРѕРїРєРё Rplace all */
 
 void Toggle_a_bookmark(int Line);
 void Clear_all_in_the_current_file();
@@ -266,18 +266,18 @@ void Clear_all_in_all_files();
 void Next_Bookmark();
 void Previous_Bookmark();
 
-void Add_Project(char *Name); /* Функция добавляет новый проект */
+void Add_Project(char *Name); /* Р¤СѓРЅРєС†РёСЏ РґРѕР±Р°РІР»СЏРµС‚ РЅРѕРІС‹Р№ РїСЂРѕРµРєС‚ */
 void Search_in_folder_SDK();
 void Inc_();
-void MarkersAdd(); /* Функция выствляет маркеры для свёртки текста */
-void CodeView(); /* Обозреватель кода */
-void AddItemTreeView(HTREEITEM hItem, LPSTR Src); /* Добавление нового элемента к  {"Proc","Labels","Struct","Virtual","Repeat","Import","Include",
+void MarkersAdd(); /* Р¤СѓРЅРєС†РёСЏ РІС‹СЃС‚РІР»СЏРµС‚ РјР°СЂРєРµСЂС‹ РґР»СЏ СЃРІС‘СЂС‚РєРё С‚РµРєСЃС‚Р° */
+void CodeView(); /* РћР±РѕР·СЂРµРІР°С‚РµР»СЊ РєРѕРґР° */
+void AddItemTreeView(HTREEITEM hItem, LPSTR Src); /* Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° Рє  {"Proc","Labels","Struct","Virtual","Repeat","Import","Include",
 												"Interface","Dialog","Macro","Const","Variables","Type"}*/
-void Goto(); /* Переход к выбранному элементу в CodeView */
+void Goto(); /* РџРµСЂРµС…РѕРґ Рє РІС‹Р±СЂР°РЅРЅРѕРјСѓ СЌР»РµРјРµРЅС‚Сѓ РІ CodeView */
 
-void CloseAllButThis();	/* Функция закрывает все вкладки, кроме активной */
-void CloseLeft();	/* Функция закрывает все вкладки слева */
-void CloseRight();	/* Функция закрывает все вкладки справа */
+void CloseAllButThis();	/* Р¤СѓРЅРєС†РёСЏ Р·Р°РєСЂС‹РІР°РµС‚ РІСЃРµ РІРєР»Р°РґРєРё, РєСЂРѕРјРµ Р°РєС‚РёРІРЅРѕР№ */
+void CloseLeft();	/* Р¤СѓРЅРєС†РёСЏ Р·Р°РєСЂС‹РІР°РµС‚ РІСЃРµ РІРєР»Р°РґРєРё СЃР»РµРІР° */
+void CloseRight();	/* Р¤СѓРЅРєС†РёСЏ Р·Р°РєСЂС‹РІР°РµС‚ РІСЃРµ РІРєР»Р°РґРєРё СЃРїСЂР°РІР° */
 
 LRESULT SendEditor(UINT Msg, WPARAM wParam, LPARAM lParam) 
 {
@@ -285,7 +285,7 @@ LRESULT SendEditor(UINT Msg, WPARAM wParam, LPARAM lParam)
 		return ::SendMessage(TabNumber[counter].hwndScintilla, Msg, wParam, lParam);
 }
 
-HANDLE CProg; /* Мьютекс для запуска единственной копии приложения */ 
+HANDLE CProg; /* РњСЊСЋС‚РµРєСЃ РґР»СЏ Р·Р°РїСѓСЃРєР° РµРґРёРЅСЃС‚РІРµРЅРЅРѕР№ РєРѕРїРёРё РїСЂРёР»РѕР¶РµРЅРёСЏ */ 
 
 static char * breakpoint_rounded_blue_inverted2_xpm[] = {
 "16 16 18 1",
@@ -457,7 +457,7 @@ const char asm_mnemonics[] = " adc add and bsf bsr bt btc btr bts call cbw clc c
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
 {	
 
-	/* Если запускается второй экземпляр программы */
+	/* Р•СЃР»Рё Р·Р°РїСѓСЃРєР°РµС‚СЃСЏ РІС‚РѕСЂРѕР№ СЌРєР·РµРјРїР»СЏСЂ РїСЂРѕРіСЂР°РјРјС‹ */
 	CProg = CreateMutex(NULL, false, "JaeEditor");
 	if(GetLastError() == ERROR_ALREADY_EXISTS)
 	{
@@ -499,12 +499,12 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 						  );
 	GetClientRect(TabControl->hWnd,&rcTabControl);
 
-	/* Создаём первую вкладку */
+	/* РЎРѕР·РґР°С‘Рј РїРµСЂРІСѓСЋ РІРєР»Р°РґРєСѓ */
 	tabNum.tabitem.mask = TCIF_TEXT;
 	tabNum.tabitem.iImage = -1;
 	tabNum.tabitem.pszText = "Untitled";
-	TabCtrl_InsertItem(TabControl->hWnd,tN,&tabNum.tabitem); /* Вставляем вкладку в TabControl */
-	TabCtrl_SetCurSel(TabControl->hWnd,tN); /* Переводим на неё фокус */
+	TabCtrl_InsertItem(TabControl->hWnd,tN,&tabNum.tabitem); /* Р’СЃС‚Р°РІР»СЏРµРј РІРєР»Р°РґРєСѓ РІ TabControl */
+	TabCtrl_SetCurSel(TabControl->hWnd,tN); /* РџРµСЂРµРІРѕРґРёРј РЅР° РЅРµС‘ С„РѕРєСѓСЃ */
 			
 	HwndScintilla = new Wnd(0,
 							"Scintilla",
@@ -578,11 +578,11 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 
 	tab_2.mask = TCIF_IMAGE;
 	tab_2.iImage = 0;
-	TabCtrl_InsertItem(TabControl_TrV->hWnd,0,&tab_2); /* Вставляем вкладку в TabControl */
+	TabCtrl_InsertItem(TabControl_TrV->hWnd,0,&tab_2); /* Р’СЃС‚Р°РІР»СЏРµРј РІРєР»Р°РґРєСѓ РІ TabControl */
 	tab_2.iImage = 1;
-	TabCtrl_InsertItem(TabControl_TrV->hWnd,1,&tab_2); /* Вставляем вкладку в TabControl */
+	TabCtrl_InsertItem(TabControl_TrV->hWnd,1,&tab_2); /* Р’СЃС‚Р°РІР»СЏРµРј РІРєР»Р°РґРєСѓ РІ TabControl */
 	tab_2.iImage = 2;
-	TabCtrl_InsertItem(TabControl_TrV->hWnd,2,&tab_2); /* Вставляем вкладку в TabControl */
+	TabCtrl_InsertItem(TabControl_TrV->hWnd,2,&tab_2); /* Р’СЃС‚Р°РІР»СЏРµРј РІРєР»Р°РґРєСѓ РІ TabControl */
 	TabCtrl_SetMinTabWidth(TabControl_TrV->hWnd,16);
 
 	TreeView_N = new Wnd(NULL,
@@ -653,12 +653,12 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 		
 	Syntax_Highlight();
 
-	/* Регистрируем сочетания клавиш */
-	RegisterHotKey(ParentWindow->hWnd, ID_KEY_O, MOD_CONTROL, 0x4F); /* Ctrl + O для открытия файла */
-	RegisterHotKey(ParentWindow->hWnd, ID_KEY_S, MOD_CONTROL, 0x53);  /* Ctrl + S для сохраниения содержимого активной вкладки */
-	RegisterHotKey(ParentWindow->hWnd, ID_KEY_N, MOD_CONTROL, 0x4E);  /* Ctrl + N для создания новой вкладки */
-	RegisterHotKey(ParentWindow->hWnd, ID_KEY_P, MOD_CONTROL, 0x50);  /* Ctrl + P для вывода на печать содержимого активной вкладки */
-	RegisterHotKey(ParentWindow->hWnd, ID_KEY_SHIFT_S, MOD_CONTROL | MOD_SHIFT, 0x53);  /* Ctrl + Shift + S для сохраниения содержимого всех вкладок */
+	/* Р РµРіРёСЃС‚СЂРёСЂСѓРµРј СЃРѕС‡РµС‚Р°РЅРёСЏ РєР»Р°РІРёС€ */
+	RegisterHotKey(ParentWindow->hWnd, ID_KEY_O, MOD_CONTROL, 0x4F); /* Ctrl + O РґР»СЏ РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р° */
+	RegisterHotKey(ParentWindow->hWnd, ID_KEY_S, MOD_CONTROL, 0x53);  /* Ctrl + S РґР»СЏ СЃРѕС…СЂР°РЅРёРµРЅРёСЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ Р°РєС‚РёРІРЅРѕР№ РІРєР»Р°РґРєРё */
+	RegisterHotKey(ParentWindow->hWnd, ID_KEY_N, MOD_CONTROL, 0x4E);  /* Ctrl + N РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РЅРѕРІРѕР№ РІРєР»Р°РґРєРё */
+	RegisterHotKey(ParentWindow->hWnd, ID_KEY_P, MOD_CONTROL, 0x50);  /* Ctrl + P РґР»СЏ РІС‹РІРѕРґР° РЅР° РїРµС‡Р°С‚СЊ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ Р°РєС‚РёРІРЅРѕР№ РІРєР»Р°РґРєРё */
+	RegisterHotKey(ParentWindow->hWnd, ID_KEY_SHIFT_S, MOD_CONTROL | MOD_SHIFT, 0x53);  /* Ctrl + Shift + S РґР»СЏ СЃРѕС…СЂР°РЅРёРµРЅРёСЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РІСЃРµС… РІРєР»Р°РґРѕРє */
 	RegisterHotKey(ParentWindow->hWnd, ID_KEY_F, MOD_CONTROL, 0x46); /* Find */
 	RegisterHotKey(ParentWindow->hWnd, ID_KEY_SHIFT_F, MOD_CONTROL | MOD_SHIFT, 0x46); /* Find and replace */
 	RegisterHotKey(ParentWindow->hWnd, ID_KEY_SHIFT_TAB, MOD_SHIFT, 0x09);
@@ -773,7 +773,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 
 	SendMessage(Toolbar,TB_SETCOLORSCHEME,0,(LPARAM)&colorsceme);
 
-	/* Открываем файлы, которые были в программе до её закрытия */
+	/* РћС‚РєСЂС‹РІР°РµРј С„Р°Р№Р»С‹, РєРѕС‚РѕСЂС‹Рµ Р±С‹Р»Рё РІ РїСЂРѕРіСЂР°РјРјРµ РґРѕ РµС‘ Р·Р°РєСЂС‹С‚РёСЏ */
 	int sectionS = rvalue.GetSectionSize("opened");
 	if(sectionS != 0)
 	{
@@ -784,7 +784,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 		rvalue.ClearSection("opened");
 	}
 
-	/* Открытие файла, вызвавшего открытие программы */
+	/* РћС‚РєСЂС‹С‚РёРµ С„Р°Р№Р»Р°, РІС‹Р·РІР°РІС€РµРіРѕ РѕС‚РєСЂС‹С‚РёРµ РїСЂРѕРіСЂР°РјРјС‹ */
 	if(lstrlen(lpCmdLine) != 0)
 	{
 		string paramLine;
@@ -809,7 +809,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 		}
 	}
 
-	iMemControl = 1000; /* для WM_SIZE. В x64 работает без проверки, в x86 только с проверкой */
+	iMemControl = 1000; /* РґР»СЏ WM_SIZE. Р’ x64 СЂР°Р±РѕС‚Р°РµС‚ Р±РµР· РїСЂРѕРІРµСЂРєРё, РІ x86 С‚РѕР»СЊРєРѕ СЃ РїСЂРѕРІРµСЂРєРѕР№ */
 	while (GetMessage(&msg, NULL, NULL, NULL))
 	{
 		TranslateMessage(&msg);
@@ -821,7 +821,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 			counter = TabCtrl_GetCurSel(TabControl->hWnd);
 			if(msg.message == WM_HOTKEY && msg.wParam == ID_KEY_SHIFT_F)
 			{
-				/* Чтобы обеспечить нормальную работу диалогов, не позволяем открывать два диалого одновременно */
+				/* Р§С‚РѕР±С‹ РѕР±РµСЃРїРµС‡РёС‚СЊ РЅРѕСЂРјР°Р»СЊРЅСѓСЋ СЂР°Р±РѕС‚Сѓ РґРёР°Р»РѕРіРѕРІ, РЅРµ РїРѕР·РІРѕР»СЏРµРј РѕС‚РєСЂС‹РІР°С‚СЊ РґРІР° РґРёР°Р»РѕРіРѕ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ */
 				if(DialogHWND != 0) DestroyWindow(DialogHWND);
 				if(DialogHWND_2 != 0) DestroyWindow(DialogHWND_2);
 				DialogHWND_2 = CreateDialog(NULL,MAKEINTRESOURCE(IDD_DIALOG2),ParentWindow->hWnd,MainDlgProc); 
@@ -829,7 +829,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 			}
 			if(msg.message == WM_HOTKEY && msg.wParam == ID_KEY_F)
 			{
-				/* Чтобы обеспечить нормальную работу диалогов, не позволяем открывать два диалого одновременно */
+				/* Р§С‚РѕР±С‹ РѕР±РµСЃРїРµС‡РёС‚СЊ РЅРѕСЂРјР°Р»СЊРЅСѓСЋ СЂР°Р±РѕС‚Сѓ РґРёР°Р»РѕРіРѕРІ, РЅРµ РїРѕР·РІРѕР»СЏРµРј РѕС‚РєСЂС‹РІР°С‚СЊ РґРІР° РґРёР°Р»РѕРіРѕ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ */
 				if(DialogHWND_2 != 0) DestroyWindow(DialogHWND_2);
 				if(DialogHWND != 0) DestroyWindow(DialogHWND);
 				DialogHWND = CreateDialog(NULL,MAKEINTRESOURCE(IDD_DIALOG1),ParentWindow->hWnd,MainDlgProc); 
@@ -873,7 +873,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 			if(msg.message == WM_KEYDOWN && (msg.wParam == '\b' || msg.wParam == 46))
 			{
 				sort(TabNumber[counter].break_points.begin(), TabNumber[counter].break_points.end());
-				/* Проверка закладок выставленных и сохранённых в векторе */
+				/* РџСЂРѕРІРµСЂРєР° Р·Р°РєР»Р°РґРѕРє РІС‹СЃС‚Р°РІР»РµРЅРЅС‹С… Рё СЃРѕС…СЂР°РЅС‘РЅРЅС‹С… РІ РІРµРєС‚РѕСЂРµ */
 				int curPos = SendEditor(SCI_GETCURRENTPOS,0,0);
 				int curLine = SendEditor(SCI_LINEFROMPOSITION,curPos,0);
 				//curLine--;
@@ -890,7 +890,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 	return (int) msg.wParam;
 }
 
-/* Обработчик для диалогов */
+/* РћР±СЂР°Р±РѕС‚С‡РёРє РґР»СЏ РґРёР°Р»РѕРіРѕРІ */
 BOOL CALLBACK MainDlgProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam)
 {
 	switch(Message) 
@@ -900,8 +900,8 @@ BOOL CALLBACK MainDlgProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam)
 	case WM_COMMAND:
 		switch (LOWORD(wParam))
 		{
-		case IDC_BUTTON3: FindDlg(IDC_EDIT1,DialogHWND_2); return true; /* Простой поиск для диалога Find and replace */
-		case IDC_BUTTON4: /* Замена для диалога Find and replace */
+		case IDC_BUTTON3: FindDlg(IDC_EDIT1,DialogHWND_2); return true; /* РџСЂРѕСЃС‚РѕР№ РїРѕРёСЃРє РґР»СЏ РґРёР°Р»РѕРіР° Find and replace */
+		case IDC_BUTTON4: /* Р—Р°РјРµРЅР° РґР»СЏ РґРёР°Р»РѕРіР° Find and replace */
 		{
 			int len = SendDlgItemMessage(DialogHWND_2,IDC_EDIT1,WM_GETTEXTLENGTH,0,0);
 			len++;
@@ -952,12 +952,12 @@ BOOL CALLBACK MainDlgProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam)
 			delete[] farr;
 			return true;
 		}
-		case IDC_BUTTON5: Find_Replace(); return true; /* кнопка Replace all для диалога Find and replace */
+		case IDC_BUTTON5: Find_Replace(); return true; /* РєРЅРѕРїРєР° Replace all РґР»СЏ РґРёР°Р»РѕРіР° Find and replace */
 		case IDC_BUTTON1:
 		{
 			if(hwnd == DialogHWND_3) DestroyWindow(DialogHWND_3);
 			else FindDlg(IDC_EDIT1,DialogHWND);
-			return true; /* Поиск для диалога Find */
+			return true; /* РџРѕРёСЃРє РґР»СЏ РґРёР°Р»РѕРіР° Find */
 		}
 		}
 		return true;
@@ -970,7 +970,7 @@ BOOL CALLBACK MainDlgProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam)
 	return FALSE;
 }
 
-/* Поиск и замена текста для кнопки Replace all */
+/* РџРѕРёСЃРє Рё Р·Р°РјРµРЅР° С‚РµРєСЃС‚Р° РґР»СЏ РєРЅРѕРїРєРё Replace all */
 void Find_Replace()
 {
 	int flaf = 0;
@@ -1023,7 +1023,7 @@ void Find_Replace()
 	delete[] farr;
 }
 
-/* Поиск */
+/* РџРѕРёСЃРє */
 void FindDlg(int EDIT, HWND DlghWnd)
 {
 	int flaf = 0;
@@ -1073,14 +1073,14 @@ void FindDlg(int EDIT, HWND DlghWnd)
 	delete[] farr;
 }
 
-/* Всё существующие включения активной вкладки */
+/* Р’СЃС‘ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРµ РІРєР»СЋС‡РµРЅРёСЏ Р°РєС‚РёРІРЅРѕР№ РІРєР»Р°РґРєРё */
 void UsedIncludes()
 {
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
 	TreeView_DeleteAllItems(TreeView_N->hWnd);
 	InfInc.clear();
 
-	/* Загрузка массива изображений для TreeView */
+	/* Р—Р°РіСЂСѓР·РєР° РјР°СЃСЃРёРІР° РёР·РѕР±СЂР°Р¶РµРЅРёР№ РґР»СЏ TreeView */
 	HMODULE hMod = GetModuleHandle(NULL);
 	HIMAGELIST himl2 = ImageList_Create(16,16,ILC_COLOR16,2,4);
 	HBITMAP TrV = LoadBitmap(hMod,MAKEINTRESOURCE(IDB_BITMAP36)); 
@@ -1104,17 +1104,17 @@ void UsedIncludes()
 	isItem.hParent = NULL;
 	isItem.hInsertAfter = TVI_ROOT;
 	isItem.item = iItem;
-	Inc = TreeView_InsertItem(TreeView_N->hWnd,&isItem); /* Вставка элемента в TreeView */
+	Inc = TreeView_InsertItem(TreeView_N->hWnd,&isItem); /* Р’СЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚Р° РІ TreeView */
 
 	WIN32_FIND_DATA w32fd;
 	memset(&w32fd,0,sizeof(WIN32_FIND_DATA));
 	char f_path[150] = {0};
-	GetModuleFileName(NULL,f_path,150); /* Получаем полный путь к исполняемому файлу, т.к. в той же папке лежит папка INCLUDE */
+	GetModuleFileName(NULL,f_path,150); /* РџРѕР»СѓС‡Р°РµРј РїРѕР»РЅС‹Р№ РїСѓС‚СЊ Рє РёСЃРїРѕР»РЅСЏРµРјРѕРјСѓ С„Р°Р№Р»Сѓ, С‚.Рє. РІ С‚РѕР№ Р¶Рµ РїР°РїРєРµ Р»РµР¶РёС‚ РїР°РїРєР° INCLUDE */
 	string f_p;
 
-	//////////////////////////////////// Поиск в папке с исходником //////////////////////////////////
+	//////////////////////////////////// РџРѕРёСЃРє РІ РїР°РїРєРµ СЃ РёСЃС…РѕРґРЅРёРєРѕРј //////////////////////////////////
 	if(TabNumber[counter].FileInfo.size() != 0)
-	{ //Если файл не сохранён, директории для поиск не может быть
+	{ //Р•СЃР»Рё С„Р°Р№Р» РЅРµ СЃРѕС…СЂР°РЅС‘РЅ, РґРёСЂРµРєС‚РѕСЂРёРё РґР»СЏ РїРѕРёСЃРє РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ
 		f_p = TabNumber[counter].FileInfo;
 		int p_exe = f_p.rfind("\\");
 		f_p.erase(p_exe+1,f_p.length());
@@ -1134,7 +1134,7 @@ void UsedIncludes()
 		} while (FindNextFile(findinclude_2,&w32fd));
 		FindClose(findinclude_2);
 	}
-	//////////////////////////////////// Поиск в папке с компилятором //////////////////////////////////
+	//////////////////////////////////// РџРѕРёСЃРє РІ РїР°РїРєРµ СЃ РєРѕРјРїРёР»СЏС‚РѕСЂРѕРј //////////////////////////////////
 	f_p = f_path;
 	int p_exe_2 = f_p.rfind("\\");
 	f_p.erase(p_exe_2+1,f_p.length());
@@ -1165,20 +1165,20 @@ void UsedIncludes()
 	} while (FindNextFile(findinclude,&w32fd));
 	FindClose(findinclude);
 
-	//////////////////////////////////// Поиск в папке Include //////////////////////////////////
+	//////////////////////////////////// РџРѕРёСЃРє РІ РїР°РїРєРµ Include //////////////////////////////////
 	f_p = f_path;
 	int p_exe_3 = f_p.rfind("\\");
 	f_p.erase(p_exe_3+1,f_p.length());
 	f_p += "INCLUDE\\";
 	SearchInDirectory(f_p.c_str());
 
-	/////////////////// Проверка на наличие инклудов в тексте //////////////////////////////////
+	/////////////////// РџСЂРѕРІРµСЂРєР° РЅР° РЅР°Р»РёС‡РёРµ РёРЅРєР»СѓРґРѕРІ РІ С‚РµРєСЃС‚Рµ //////////////////////////////////
 	int textlenght = SendMessage(TabNumber[counter].hwndScintilla,SCI_GETTEXTLENGTH,0,0);
 	InvolvedInclude.clear();
 	Includes_Active_Tab.ID = 0;
 	Includes_Active_Tab.NameIncludeWithExten = "";
 	Includes_Active_Tab.PathToTheInclude = "";
-	InvolvedInclude.push_back(Includes_Active_Tab); /* Если инклуд добавили в дерево, добавляем информацию о нём в вектор */
+	InvolvedInclude.push_back(Includes_Active_Tab); /* Р•СЃР»Рё РёРЅРєР»СѓРґ РґРѕР±Р°РІРёР»Рё РІ РґРµСЂРµРІРѕ, РґРѕР±Р°РІР»СЏРµРј РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РЅС‘Рј РІ РІРµРєС‚РѕСЂ */
 	if(textlenght != 0)
 	{
 		char* textinRE = new char[textlenght+1];
@@ -1186,10 +1186,10 @@ void UsedIncludes()
 		{
 			string txt_;
 			SendEditor(SCI_GETTEXT,textlenght+1,(LPARAM)textinRE);
-			strupr(textinRE); /* Поиск будет в верхнем регистре */
+			strupr(textinRE); /* РџРѕРёСЃРє Р±СѓРґРµС‚ РІ РІРµСЂС…РЅРµРј СЂРµРіРёСЃС‚СЂРµ */
 			txt_ = textinRE;
 
-			/* Поиск в тексте строк вида ("*.inc) и ('*.inc), строки в верхнем регистре */
+			/* РџРѕРёСЃРє РІ С‚РµРєСЃС‚Рµ СЃС‚СЂРѕРє РІРёРґР° ("*.inc) Рё ('*.inc), СЃС‚СЂРѕРєРё РІ РІРµСЂС…РЅРµРј СЂРµРіРёСЃС‚СЂРµ */
 			for(int count = 0; count < InfInc.size(); count++)
 			{
 				int checkup_ = 0;
@@ -1224,10 +1224,10 @@ void UsedIncludes()
 					Includes_Active_Tab.ID = 2;
 					Includes_Active_Tab.NameIncludeWithExten = InfInc[count].nameinclude;
 					Includes_Active_Tab.PathToTheInclude = InfInc[count].pathinclude;
-					InvolvedInclude.push_back(Includes_Active_Tab); /* Если инклуд добавили в дерево, добавляем информацию о нём в вектор */
+					InvolvedInclude.push_back(Includes_Active_Tab); /* Р•СЃР»Рё РёРЅРєР»СѓРґ РґРѕР±Р°РІРёР»Рё РІ РґРµСЂРµРІРѕ, РґРѕР±Р°РІР»СЏРµРј РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РЅС‘Рј РІ РІРµРєС‚РѕСЂ */
 				}
 			}
-			/* Поиск строк вида (folder\*.inc), строки также в верхнем регистре */
+			/* РџРѕРёСЃРє СЃС‚СЂРѕРє РІРёРґР° (folder\*.inc), СЃС‚СЂРѕРєРё С‚Р°РєР¶Рµ РІ РІРµСЂС…РЅРµРј СЂРµРіРёСЃС‚СЂРµ */
 			for(int count = 0; count < InfInc.size(); count++)
 			{
 				string fold = InfInc[count].pathinclude;
@@ -1250,10 +1250,10 @@ void UsedIncludes()
 					Includes_Active_Tab.ID = 1;
 					Includes_Active_Tab.NameIncludeWithExten = InfInc[count].nameinclude;
 					Includes_Active_Tab.PathToTheInclude = InfInc[count].pathinclude;
-					InvolvedInclude.push_back(Includes_Active_Tab); /* Если инклуд добавили в дерево, добавляем информацию о нём в вектор */
+					InvolvedInclude.push_back(Includes_Active_Tab); /* Р•СЃР»Рё РёРЅРєР»СѓРґ РґРѕР±Р°РІРёР»Рё РІ РґРµСЂРµРІРѕ, РґРѕР±Р°РІР»СЏРµРј РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РЅС‘Рј РІ РІРµРєС‚РѕСЂ */
 				}
 			}
-			/* Поиск строк вида (folder/*.inc), строки также в верхнем регистре */
+			/* РџРѕРёСЃРє СЃС‚СЂРѕРє РІРёРґР° (folder/*.inc), СЃС‚СЂРѕРєРё С‚Р°РєР¶Рµ РІ РІРµСЂС…РЅРµРј СЂРµРіРёСЃС‚СЂРµ */
 			for(int count = 0; count < InfInc.size(); count++)
 			{
 				string fold = InfInc[count].pathinclude;
@@ -1276,19 +1276,19 @@ void UsedIncludes()
 					Includes_Active_Tab.ID = 1;
 					Includes_Active_Tab.NameIncludeWithExten = InfInc[count].nameinclude;
 					Includes_Active_Tab.PathToTheInclude = InfInc[count].pathinclude;
-					InvolvedInclude.push_back(Includes_Active_Tab); /* Если инклуд добавили в дерево, добавляем информацию о нём в вектор */
+					InvolvedInclude.push_back(Includes_Active_Tab); /* Р•СЃР»Рё РёРЅРєР»СѓРґ РґРѕР±Р°РІРёР»Рё РІ РґРµСЂРµРІРѕ, РґРѕР±Р°РІР»СЏРµРј РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РЅС‘Рј РІ РІРµРєС‚РѕСЂ */
 				}
 			}
 		}
 		delete[] textinRE;
 	}
-	/* Параметры текста элемента в TreeView */
+	/* РџР°СЂР°РјРµС‚СЂС‹ С‚РµРєСЃС‚Р° СЌР»РµРјРµРЅС‚Р° РІ TreeView */
 	TreeView_SetTextColor(TreeView_N->hWnd,RGB(71,60,139));
 	TreeView_SetLineColor(TreeView_N->hWnd,RGB(71,60,139));
 	TreeView_Expand(TreeView_N->hWnd,Inc,TVM_EXPAND);
 }
 
-/* Поиск инклудов в переменных окружения */
+/* РџРѕРёСЃРє РёРЅРєР»СѓРґРѕРІ РІ РїРµСЂРµРјРµРЅРЅС‹С… РѕРєСЂСѓР¶РµРЅРёСЏ */
 void SearchInDirectory(string DirectorySearch)
 {
 	WIN32_FIND_DATA wfd;
@@ -1341,7 +1341,7 @@ void SearchInDirectory(string DirectorySearch)
 	FindClose(findinclude_3);
 }
 
-/* DirectorySearch - директория для поиска, SearchWord - что ищем, Folders - дескриптор папки куда добавлять найденное */
+/* DirectorySearch - РґРёСЂРµРєС‚РѕСЂРёСЏ РґР»СЏ РїРѕРёСЃРєР°, SearchWord - С‡С‚Рѕ РёС‰РµРј, Folders - РґРµСЃРєСЂРёРїС‚РѕСЂ РїР°РїРєРё РєСѓРґР° РґРѕР±Р°РІР»СЏС‚СЊ РЅР°Р№РґРµРЅРЅРѕРµ */
 void FindFilesInclude(string DirectorySearch, LPCSTR SearchWord ,HTREEITEM Folders)
 {
 	WIN32_FIND_DATA wfd;
@@ -1378,7 +1378,7 @@ void FindFilesInclude(string DirectorySearch, LPCSTR SearchWord ,HTREEITEM Folde
 	FindClose(hfind);
 }
 
-/* Добавление нового элемента в TreeView для первой вкладки */
+/* Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РІ TreeView РґР»СЏ РїРµСЂРІРѕР№ РІРєР»Р°РґРєРё */
 HTREEITEM InsItemTreeView_Num2(HTREEITEM htreeitem,string tempbuf)
 {
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
@@ -1413,7 +1413,7 @@ HTREEITEM InsItemTreeView_Num2(HTREEITEM htreeitem,string tempbuf)
 	return TreeView_InsertItem(TreeView_N->hWnd,&isItem);
 }
 
-/* Добавление нового элемента в TreeView для второй вкладки */
+/* Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РІ TreeView РґР»СЏ РІС‚РѕСЂРѕР№ РІРєР»Р°РґРєРё */
 HTREEITEM InsItemTreeView(HTREEITEM htreeitem,string tempbuf)
 {
 	ZeroMemory(&tvitem,sizeof(TVITEM));
@@ -1447,7 +1447,7 @@ HTREEITEM InsItemTreeView(HTREEITEM htreeitem,string tempbuf)
 	return TreeView_InsertItem(AllInc_TrV->hWnd,&insItem);
 }
 
-/* Обозреватель кода */
+/* РћР±РѕР·СЂРµРІР°С‚РµР»СЊ РєРѕРґР° */
 void CodeView()
 {
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
@@ -1476,7 +1476,7 @@ void CodeView()
 	}
 	
 	TreeView_DeleteAllItems(TreeView_R->hWnd);
-	/* Загрузка массива изображений для TreeView */
+	/* Р—Р°РіСЂСѓР·РєР° РјР°СЃСЃРёРІР° РёР·РѕР±СЂР°Р¶РµРЅРёР№ РґР»СЏ TreeView */
 	HMODULE hMod = GetModuleHandle(NULL);
 	HIMAGELIST himl2 = ImageList_Create(16,16,ILC_COLOR16,2,4);
 	HBITMAP TrV = LoadBitmap(hMod,MAKEINTRESOURCE(IDB_BITMAP65)); 
@@ -1509,7 +1509,7 @@ void CodeView()
 	isItem.hParent = NULL;
 	isItem.hInsertAfter = TVI_ROOT;
 	isItem.item = iItem;
-	HTREEITEM NameASM = TreeView_InsertItem(TreeView_R->hWnd,&isItem); /* Вставка элемента в TreeView */
+	HTREEITEM NameASM = TreeView_InsertItem(TreeView_R->hWnd,&isItem); /* Р’СЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚Р° РІ TreeView */
 
 	iHTR.clear();
 	const char* NameLabels[] = {"Proc","Labels","Struct","Virtual","Repeat","Import","Include","Dialog","Macro","Const"};
@@ -1683,7 +1683,7 @@ void CodeView()
 	TreeView_SetTextColor(TreeView_R->hWnd,RGB(71,60,139));
 	TreeView_SetLineColor(TreeView_R->hWnd,RGB(71,60,139));
 
-	/* Если родительский элемент остался без дочерних, удаляем его */
+	/* Р•СЃР»Рё СЂРѕРґРёС‚РµР»СЊСЃРєРёР№ СЌР»РµРјРµРЅС‚ РѕСЃС‚Р°Р»СЃСЏ Р±РµР· РґРѕС‡РµСЂРЅРёС…, СѓРґР°Р»СЏРµРј РµРіРѕ */
 	for(int i = 0; i < 10; i++)
 	{
 		HTREEITEM itemTR = TreeView_GetChild(TreeView_R->hWnd,iHTR[i]);
@@ -1704,7 +1704,7 @@ void CodeView()
 	}
 }
 
-/* Добавление нового элемента к  {"Proc","Labels","Struct","Virtual","Repeat","Import","Include",
+/* Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° Рє  {"Proc","Labels","Struct","Virtual","Repeat","Import","Include",
 																		"Dialog","Macro","Const"}*/
 void AddItemTreeView(HTREEITEM hItem, LPSTR Src)
 {
@@ -1720,7 +1720,7 @@ void AddItemTreeView(HTREEITEM hItem, LPSTR Src)
 	TreeView_InsertItem(TreeView_R->hWnd,&insItem);
 }
 
-/* Всё существующие включения */
+/* Р’СЃС‘ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРµ РІРєР»СЋС‡РµРЅРёСЏ */
 void AllIncludes()
 {
 	int iIS = 0;
@@ -1758,18 +1758,18 @@ void AllIncludes()
 		
 		string Search_Word;
 		char pth[150] = {0};
-					GetModuleFileName(NULL,pth,150); /* Получаем полный путь к исполняемому файлу, т.к. в той же папке лежит компилятор.
-																		А для запуска самого компилятора нужен полный путь к нему */
-					path_to_the_include = pth; /* Полученный путь заносим в string, что бы проще было получить только путь, без .exe */
+					GetModuleFileName(NULL,pth,150); /* РџРѕР»СѓС‡Р°РµРј РїРѕР»РЅС‹Р№ РїСѓС‚СЊ Рє РёСЃРїРѕР»РЅСЏРµРјРѕРјСѓ С„Р°Р№Р»Сѓ, С‚.Рє. РІ С‚РѕР№ Р¶Рµ РїР°РїРєРµ Р»РµР¶РёС‚ РєРѕРјРїРёР»СЏС‚РѕСЂ.
+																		Рђ РґР»СЏ Р·Р°РїСѓСЃРєР° СЃР°РјРѕРіРѕ РєРѕРјРїРёР»СЏС‚РѕСЂР° РЅСѓР¶РµРЅ РїРѕР»РЅС‹Р№ РїСѓС‚СЊ Рє РЅРµРјСѓ */
+					path_to_the_include = pth; /* РџРѕР»СѓС‡РµРЅРЅС‹Р№ РїСѓС‚СЊ Р·Р°РЅРѕСЃРёРј РІ string, С‡С‚Рѕ Р±С‹ РїСЂРѕС‰Рµ Р±С‹Р»Рѕ РїРѕР»СѓС‡РёС‚СЊ С‚РѕР»СЊРєРѕ РїСѓС‚СЊ, Р±РµР· .exe */
 					int pst = path_to_the_include.rfind("\\");
 					path_to_the_include.erase(pst + 1,path_to_the_include.length());
 					path_to_the_include += "INCLUDE\\";
 					OriginalDirectory = path_to_the_include;
-					if(Directory.size() != 0) path_to_the_include = Directory; // Если потребуется поиск во вложенных папках					
+					if(Directory.size() != 0) path_to_the_include = Directory; // Р•СЃР»Рё РїРѕС‚СЂРµР±СѓРµС‚СЃСЏ РїРѕРёСЃРє РІРѕ РІР»РѕР¶РµРЅРЅС‹С… РїР°РїРєР°С…					
 					Search_Word = "*.*";
 					lstrcpy(pth,Search_Word.c_str());
 
-			/* Загрузка массива изображений для TreeView */
+			/* Р—Р°РіСЂСѓР·РєР° РјР°СЃСЃРёРІР° РёР·РѕР±СЂР°Р¶РµРЅРёР№ РґР»СЏ TreeView */
 			HMODULE hMod = GetModuleHandle(NULL);
 			HIMAGELIST himl2 = ImageList_Create(16,16,ILC_COLOR16,2,4);
 			HBITMAP TrV = LoadBitmap(hMod,MAKEINTRESOURCE(IDB_BITMAP36)); 
@@ -1791,15 +1791,15 @@ void AllIncludes()
 		insItem.hParent = NULL;
 		insItem.hInsertAfter = TVI_ROOT;
 		insItem.item = tvitem;
-		Include = TreeView_InsertItem(AllInc_TrV->hWnd,&insItem); /* Вставка элемента в TreeView */
+		Include = TreeView_InsertItem(AllInc_TrV->hWnd,&insItem); /* Р’СЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚Р° РІ TreeView */
 		iInclude = 1;
 
 		htreeitem.clear();
 
-		FindFilesInclude(path_to_the_include.c_str(),"*.*", Include); // Первый поиск (цель - все файлы в папке Include) 
+		FindFilesInclude(path_to_the_include.c_str(),"*.*", Include); // РџРµСЂРІС‹Р№ РїРѕРёСЃРє (С†РµР»СЊ - РІСЃРµ С„Р°Р№Р»С‹ РІ РїР°РїРєРµ Include) 
 	
 
-		/* Вставка элемента в TreeView */
+		/* Р’СЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚Р° РІ TreeView */
 		TreeView_SetTextColor(AllInc_TrV->hWnd,RGB(71,60,139));
 		TreeView_SetLineColor(AllInc_TrV->hWnd,RGB(71,60,139));
 		//TreeView_Expand(AllInc_TrV->hWnd,Include,TVM_EXPAND);
@@ -1824,7 +1824,7 @@ void AllIncludes()
 		if(iIS == 1) TreeView_Expand(AllInc_TrV->hWnd,Include,TVM_EXPAND);
 }
 
-/* Функция создаёт новую переменную окружения для включений*/
+/* Р¤СѓРЅРєС†РёСЏ СЃРѕР·РґР°С‘С‚ РЅРѕРІСѓСЋ РїРµСЂРµРјРµРЅРЅСѓСЋ РѕРєСЂСѓР¶РµРЅРёСЏ РґР»СЏ РІРєР»СЋС‡РµРЅРёР№*/
 void SetInvVar() 
 {
 	char buffEnVar[12000] = {0};
@@ -1846,7 +1846,7 @@ void SetInvVar()
 	}
 }
 
-/* Функция показывает контекстное меню при нажатие правой кнопкой мыши */
+/* Р¤СѓРЅРєС†РёСЏ РїРѕРєР°Р·С‹РІР°РµС‚ РєРѕРЅС‚РµРєСЃС‚РЅРѕРµ РјРµРЅСЋ РїСЂРё РЅР°Р¶Р°С‚РёРµ РїСЂР°РІРѕР№ РєРЅРѕРїРєРѕР№ РјС‹С€Рё */
 void ShowContextMenu()
 {
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
@@ -1882,7 +1882,7 @@ void ShowContextMenu()
 	}
 }
 
-/* Функция вывода в StatusBar данных */
+/* Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° РІ StatusBar РґР°РЅРЅС‹С… */
 void InStatusBar() 
 {
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
@@ -1912,37 +1912,37 @@ void InStatusBar()
 	}
 }
 
-/* Обработчик событий */
+/* РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ */
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
 NMHDR* nmhdr = (LPNMHDR) lParam;
 NMTVGETINFOTIP* nmInfTip = (LPNMTVGETINFOTIP) lParam;
 SELCHANGE *selchange = (SELCHANGE*) lParam;
 ENDROPFILES *dropfiles = (ENDROPFILES *) lParam;
-LPMINMAXINFO lpmmi = (LPMINMAXINFO) lParam; /* информацию о развернутом размере окна и устанавливаемых позициях
-																		ее минимального и максимального размера */
+LPMINMAXINFO lpmmi = (LPMINMAXINFO) lParam; /* РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЂР°Р·РІРµСЂРЅСѓС‚РѕРј СЂР°Р·РјРµСЂРµ РѕРєРЅР° Рё СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРјС‹С… РїРѕР·РёС†РёСЏС…
+																		РµРµ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ Рё РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ СЂР°Р·РјРµСЂР° */
 SCNotification *pMsg = (SCNotification*)lParam;
 PAINTSTRUCT  ps;
 POINT lPoint;
-LPNMMOUSE lpnm = (LPNMMOUSE) lParam; /* Сообщения от тулбара */
+LPNMMOUSE lpnm = (LPNMMOUSE) lParam; /* РЎРѕРѕР±С‰РµРЅРёСЏ РѕС‚ С‚СѓР»Р±Р°СЂР° */
 
-    /* Если произошло нажатие на иконку в трее */
+    /* Р•СЃР»Рё РїСЂРѕРёР·РѕС€Р»Рѕ РЅР°Р¶Р°С‚РёРµ РЅР° РёРєРѕРЅРєСѓ РІ С‚СЂРµРµ */
 	if(message == MYWM_NOTIFYICON && lParam == WM_LBUTTONDOWN)
 	{
 		if (iTray==0)
 		{
-			ShowWindow(ParentWindow->hWnd,SW_HIDE); // скрыть окно при нажатии на иконку;
+			ShowWindow(ParentWindow->hWnd,SW_HIDE); // СЃРєСЂС‹С‚СЊ РѕРєРЅРѕ РїСЂРё РЅР°Р¶Р°С‚РёРё РЅР° РёРєРѕРЅРєСѓ;
 			iTray=1;
 		} 
 		else
 		{
-			ShowWindow(ParentWindow->hWnd,SW_SHOW); // показать окно при нажатии на иконку;
+			ShowWindow(ParentWindow->hWnd,SW_SHOW); // РїРѕРєР°Р·Р°С‚СЊ РѕРєРЅРѕ РїСЂРё РЅР°Р¶Р°С‚РёРё РЅР° РёРєРѕРЅРєСѓ;
 			iTray=0;
 		}
 	}	
 
 switch (message)
 {
-	case WM_DROPFILES: /* Перетаскивание файлов */
+	case WM_DROPFILES: /* РџРµСЂРµС‚Р°СЃРєРёРІР°РЅРёРµ С„Р°Р№Р»РѕРІ */
 	{
 		char lpszFile[MAX_PATH] = {0};
 		int uFile;
@@ -1956,7 +1956,7 @@ switch (message)
 		DragFinish(hDrop);
 		break;
 	}
-	case WM_DRAWITEM: /* Перерисовка надписи на шапке таба */
+	case WM_DRAWITEM: /* РџРµСЂРµСЂРёСЃРѕРІРєР° РЅР°РґРїРёСЃРё РЅР° С€Р°РїРєРµ С‚Р°Р±Р° */
 	{
 		LPDRAWITEMSTRUCT lpdis;
 		lpdis = (LPDRAWITEMSTRUCT)lParam;
@@ -2054,7 +2054,7 @@ switch (message)
 				case 234: lpttt->lpszText = "Call autocompletion"; break;
 			}
 		}
-		if(nmInfTip->hdr.code == TTN_GETDISPINFO) /* Всплывающие подсказки для TabControl'ов */
+		if(nmInfTip->hdr.code == TTN_GETDISPINFO) /* Р’СЃРїР»С‹РІР°СЋС‰РёРµ РїРѕРґСЃРєР°Р·РєРё РґР»СЏ TabControl'РѕРІ */
 		{
 			POINT PosCur, PosCur_Tab;
 			RECT rctabcontrol, rc_tab; 
@@ -2104,7 +2104,7 @@ switch (message)
 			SendMessage(tooltip_t,TTM_SETTIPBKCOLOR,RGB(255,250,250),0);
 			SendMessage(tooltip_t,TTM_SETTIPTEXTCOLOR,RGB(54,54,54),0);
 		}
-		if(lpnm->hdr.code == NM_CLICK) /* Клик на иконке тулбара */	 
+		if(lpnm->hdr.code == NM_CLICK) /* РљР»РёРє РЅР° РёРєРѕРЅРєРµ С‚СѓР»Р±Р°СЂР° */	 
 		{
 			switch(lpnm->dwItemSpec) 
 			{
@@ -2250,7 +2250,7 @@ switch (message)
 				pCallTipCurDesc = NULL;
 				pCallTipNextWord = NULL;    
 
-				/* При нажатии Enter, в начало новой строки вставится столько отступов, сколько их было в предидущей */
+				/* РџСЂРё РЅР°Р¶Р°С‚РёРё Enter, РІ РЅР°С‡Р°Р»Рѕ РЅРѕРІРѕР№ СЃС‚СЂРѕРєРё РІСЃС‚Р°РІРёС‚СЃСЏ СЃС‚РѕР»СЊРєРѕ РѕС‚СЃС‚СѓРїРѕРІ, СЃРєРѕР»СЊРєРѕ РёС… Р±С‹Р»Рѕ РІ РїСЂРµРґРёРґСѓС‰РµР№ */
 				int curPos = SendEditor(SCI_GETCURRENTPOS,0,0);
 				int curLine = SendEditor(SCI_LINEFROMPOSITION,curPos,0);
 				int lineLength = SendEditor(SCI_LINELENGTH,curLine,0);
@@ -2273,7 +2273,7 @@ switch (message)
 								delete[] chars;
 							}
 					}
-					/* Проверка закладок выставленных и сохранённых в векторе */
+					/* РџСЂРѕРІРµСЂРєР° Р·Р°РєР»Р°РґРѕРє РІС‹СЃС‚Р°РІР»РµРЅРЅС‹С… Рё СЃРѕС…СЂР°РЅС‘РЅРЅС‹С… РІ РІРµРєС‚РѕСЂРµ */
 					curLine--;
 					for(int i = 0; i < TabNumber[counter].break_points.size(); i++)
 					{
@@ -2309,12 +2309,12 @@ switch (message)
 		{
 			if(pMsg->margin == 1)
 			{
-				int linenumber = SendEditor(SCI_LINEFROMPOSITION,pMsg->position,0); /* Номер активной строки */
+				int linenumber = SendEditor(SCI_LINEFROMPOSITION,pMsg->position,0); /* РќРѕРјРµСЂ Р°РєС‚РёРІРЅРѕР№ СЃС‚СЂРѕРєРё */
 				Toggle_a_bookmark(linenumber);
 			} 
 			else if(pMsg->margin == 2)
 			{
-				int linenumber = SendEditor(SCI_LINEFROMPOSITION,pMsg->position,0); /* Номер активной строки */
+				int linenumber = SendEditor(SCI_LINEFROMPOSITION,pMsg->position,0); /* РќРѕРјРµСЂ Р°РєС‚РёРІРЅРѕР№ СЃС‚СЂРѕРєРё */
 				int iExpanded = SendEditor(SCI_GETFOLDEXPANDED,linenumber,0);
 				SendEditor(SCI_TOGGLEFOLD,linenumber,0);
 				Sleep(100); 
@@ -2333,7 +2333,7 @@ switch (message)
 		}
 		if(nmhdr->code == SCN_UPDATEUI && HwndScintilla)
 		{
-			/* Динамически расширяемая MARGIN_NUMBER с выводом в неё номеров строк */
+			/* Р”РёРЅР°РјРёС‡РµСЃРєРё СЂР°СЃС€РёСЂСЏРµРјР°СЏ MARGIN_NUMBER СЃ РІС‹РІРѕРґРѕРј РІ РЅРµС‘ РЅРѕРјРµСЂРѕРІ СЃС‚СЂРѕРє */
 
 			char buffer[1024] = {0};
 			int number_lines = SendEditor(SCI_GETLINECOUNT,0,0);
@@ -2342,12 +2342,12 @@ switch (message)
 			int margin_size = SendEditor(SCI_TEXTWIDTH,STYLE_LINENUMBER,(LPARAM)buffer);
 			SendEditor(SCI_SETMARGINWIDTHN, 0, margin_size + 10);
 
-			/* Выставляем маркеры для свёртки текста */
+			/* Р’С‹СЃС‚Р°РІР»СЏРµРј РјР°СЂРєРµСЂС‹ РґР»СЏ СЃРІС‘СЂС‚РєРё С‚РµРєСЃС‚Р° */
 				MarkersAdd();
 
-			InStatusBar(); /* Вывод номера строки и символа в StatusBar */
+			InStatusBar(); /* Р’С‹РІРѕРґ РЅРѕРјРµСЂР° СЃС‚СЂРѕРєРё Рё СЃРёРјРІРѕР»Р° РІ StatusBar */
 
-			/* Подсветка парных скобок (), {}, [], <> */
+			/* РџРѕРґСЃРІРµС‚РєР° РїР°СЂРЅС‹С… СЃРєРѕР±РѕРє (), {}, [], <> */
 			long PosBegin = SendEditor(SCI_GETCURRENTPOS, 0, 0);
 			long PosEnd = SendEditor(SCI_BRACEMATCH, PosBegin - 1, 0);
 
@@ -2356,7 +2356,7 @@ switch (message)
 			else
 				SendEditor(SCI_BRACEHIGHLIGHT, -1, -1);
 
-			/* Подсветка схожих слов с выделенным, подсвечиваются только целые слова */
+			/* РџРѕРґСЃРІРµС‚РєР° СЃС…РѕР¶РёС… СЃР»РѕРІ СЃ РІС‹РґРµР»РµРЅРЅС‹Рј, РїРѕРґСЃРІРµС‡РёРІР°СЋС‚СЃСЏ С‚РѕР»СЊРєРѕ С†РµР»С‹Рµ СЃР»РѕРІР° */
 			if(pMsg->updated == SC_UPDATE_SELECTION)
 			{ 		
 				int t_l = SendEditor(WM_GETTEXTLENGTH,0,0);
@@ -2390,7 +2390,7 @@ switch (message)
 				SendEditor(SCI_COLOURISE,0,-1);
 			}
 		}
-		/* Фокус на вкладке */
+		/* Р¤РѕРєСѓСЃ РЅР° РІРєР»Р°РґРєРµ */
 		if(nmhdr->code == NM_CLICK && nmhdr->hwndFrom == TabControl->hWnd) 
 		{
 			for(int u = 0 ; u < TabNumber.size(); u++) 
@@ -2403,14 +2403,14 @@ switch (message)
 				ShowWindow(TabNumber[counter].hwndScintilla,SW_SHOWNOACTIVATE);
 					
 				Inc_();
-				SetFocus(TabNumber[counter].hwndScintilla); // Устанавливает фокус ввода;
+				SetFocus(TabNumber[counter].hwndScintilla); // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С„РѕРєСѓСЃ РІРІРѕРґР°;
 		}
-		/* Фокус на вкладке */
+		/* Р¤РѕРєСѓСЃ РЅР° РІРєР»Р°РґРєРµ */
 		if(nmhdr->code == NM_CLICK && nmhdr->hwndFrom == TabControl_TrV->hWnd) 
 		{
 			Inc_();
 		}
-		/* Всплывающие подсказки для элементов дерева (включения активной вкладки) */
+		/* Р’СЃРїР»С‹РІР°СЋС‰РёРµ РїРѕРґСЃРєР°Р·РєРё РґР»СЏ СЌР»РµРјРµРЅС‚РѕРІ РґРµСЂРµРІР° (РІРєР»СЋС‡РµРЅРёСЏ Р°РєС‚РёРІРЅРѕР№ РІРєР»Р°РґРєРё) */
 		if(nmInfTip->hdr.code == TVN_GETINFOTIP) 
 		{
 			count = TabCtrl_GetCurSel(TabControl_TrV->hWnd);
@@ -2438,7 +2438,7 @@ switch (message)
 				SendMessage(tooltip,TTM_SETTIPTEXTCOLOR,RGB(54,54,54),0);
 			}
 		}
-		/* Открытие инклуда по двойному щелчку на нём левой кнопкой мыши */
+		/* РћС‚РєСЂС‹С‚РёРµ РёРЅРєР»СѓРґР° РїРѕ РґРІРѕР№РЅРѕРјСѓ С‰РµР»С‡РєСѓ РЅР° РЅС‘Рј Р»РµРІРѕР№ РєРЅРѕРїРєРѕР№ РјС‹С€Рё */
 		if(nmhdr->code == NM_DBLCLK)
 		{
 			count = TabCtrl_GetCurSel(TabControl_TrV->hWnd);
@@ -2470,7 +2470,7 @@ switch (message)
 				Goto();
 			}
 		}
-		/* Удаление и добавление инклудов */ 
+		/* РЈРґР°Р»РµРЅРёРµ Рё РґРѕР±Р°РІР»РµРЅРёРµ РёРЅРєР»СѓРґРѕРІ */ 
 		if(nmhdr->code == NM_RCLICK && nmhdr->hwndFrom != TabControl_TrV->hWnd && nmhdr->hwndFrom != TabControl->hWnd)
 		{
 			count = TabCtrl_GetCurSel(TabControl_TrV->hWnd);
@@ -2505,13 +2505,13 @@ switch (message)
 					HTREEITEM item_2 = TreeView_GetParent(AllInc_TrV->hWnd,item);
 					strlwr(etr);
 					string NameSelectedInclude = etr;
-					int  i_inc = NameSelectedInclude.find(".inc"); /* Убедимся, что выбран .inc */
+					int  i_inc = NameSelectedInclude.find(".inc"); /* РЈР±РµРґРёРјСЃСЏ, С‡С‚Рѕ РІС‹Р±СЂР°РЅ .inc */
 					if(i_inc != -1)
 					{
 						tv_item.hItem = item_2;
 						TreeView_GetItem(AllInc_TrV->hWnd,&tv_item);
 						strlwr(etr);
-						string checkup = etr; /* Переменная для проверки */
+						string checkup = etr; /* РџРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РїСЂРѕРІРµСЂРєРё */
 						if(checkup == "include")
 						{
 							added_to_the_source_code = "include \'";
@@ -2685,10 +2685,10 @@ switch (message)
 		}
 	break;
 	}
-	case WM_GETMINMAXINFO: /* сообщение запрашивающее информацию о размере окна перед его изменением */
+	case WM_GETMINMAXINFO: /* СЃРѕРѕР±С‰РµРЅРёРµ Р·Р°РїСЂР°С€РёРІР°СЋС‰РµРµ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЂР°Р·РјРµСЂРµ РѕРєРЅР° РїРµСЂРµРґ РµРіРѕ РёР·РјРµРЅРµРЅРёРµРј */
 	{
-		lpmmi->ptMinTrackSize.x = 685; /* минимум ширины окна */
-		lpmmi->ptMinTrackSize.y = 458; /* минимум высоты окна */
+		lpmmi->ptMinTrackSize.x = 685; /* РјРёРЅРёРјСѓРј С€РёСЂРёРЅС‹ РѕРєРЅР° */
+		lpmmi->ptMinTrackSize.y = 458; /* РјРёРЅРёРјСѓРј РІС‹СЃРѕС‚С‹ РѕРєРЅР° */
 		break;
 	}
 	case WM_SIZE: 
@@ -2860,7 +2860,7 @@ switch (message)
 			}
 			case ID_FILEFINDANDREPLASE:
 			{
-				/* Чтобы обеспечить нормальную работу диалогов, не позволяем открывать два диалого одновременно */
+				/* Р§С‚РѕР±С‹ РѕР±РµСЃРїРµС‡РёС‚СЊ РЅРѕСЂРјР°Р»СЊРЅСѓСЋ СЂР°Р±РѕС‚Сѓ РґРёР°Р»РѕРіРѕРІ, РЅРµ РїРѕР·РІРѕР»СЏРµРј РѕС‚РєСЂС‹РІР°С‚СЊ РґРІР° РґРёР°Р»РѕРіРѕ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ */
 				if(DialogHWND != 0) DestroyWindow(DialogHWND);
 				if(DialogHWND_2 != 0) DestroyWindow(DialogHWND_2);
 				if(DialogHWND_3 != 0) DestroyWindow(DialogHWND_3);
@@ -2870,7 +2870,7 @@ switch (message)
 			}
 			case ID_FILEFIND: 
 			{
-				/* Чтобы обеспечить нормальную работу диалогов, не позволяем открывать два диалого одновременно */
+				/* Р§С‚РѕР±С‹ РѕР±РµСЃРїРµС‡РёС‚СЊ РЅРѕСЂРјР°Р»СЊРЅСѓСЋ СЂР°Р±РѕС‚Сѓ РґРёР°Р»РѕРіРѕРІ, РЅРµ РїРѕР·РІРѕР»СЏРµРј РѕС‚РєСЂС‹РІР°С‚СЊ РґРІР° РґРёР°Р»РѕРіРѕ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ */
 				if(DialogHWND_2 != 0) DestroyWindow(DialogHWND_2);
 				if(DialogHWND != 0) DestroyWindow(DialogHWND);
 				if(DialogHWND_3 != 0) DestroyWindow(DialogHWND_3);
@@ -2880,7 +2880,7 @@ switch (message)
 			}
 			case ID_ABOUT:
 			{
-				/* Чтобы обеспечить нормальную работу диалогов, не позволяем открывать два диалого одновременно */
+				/* Р§С‚РѕР±С‹ РѕР±РµСЃРїРµС‡РёС‚СЊ РЅРѕСЂРјР°Р»СЊРЅСѓСЋ СЂР°Р±РѕС‚Сѓ РґРёР°Р»РѕРіРѕРІ, РЅРµ РїРѕР·РІРѕР»СЏРµРј РѕС‚РєСЂС‹РІР°С‚СЊ РґРІР° РґРёР°Р»РѕРіРѕ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ */
 				if(DialogHWND_2 != 0) DestroyWindow(DialogHWND_2);
 				if(DialogHWND_3 != 0) DestroyWindow(DialogHWND_3);
 				if(DialogHWND != 0) DestroyWindow(DialogHWND);
@@ -2905,7 +2905,7 @@ switch (message)
 return DefWindowProc(hWnd, message, wParam, lParam);
 }
 
-/* Удаление (include "folder\*.inc" or include "*.inc") из исходного кода */
+/* РЈРґР°Р»РµРЅРёРµ (include "folder\*.inc" or include "*.inc") РёР· РёСЃС…РѕРґРЅРѕРіРѕ РєРѕРґР° */
 void Remove_From_Source_Code(string str1, string str2, string str3, string str4, string str5, string str6, int num1) 
 {
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
@@ -2914,7 +2914,7 @@ void Remove_From_Source_Code(string str1, string str2, string str3, string str4,
 	char *WindowTex = new char[TextLength];
 	SendEditor(SCI_GETTEXT,TextLength,(LPARAM)WindowTex);
 	string WinText = WindowTex;
-	/* Переводим в верхний регистр строки */
+	/* РџРµСЂРµРІРѕРґРёРј РІ РІРµСЂС…РЅРёР№ СЂРµРіРёСЃС‚СЂ СЃС‚СЂРѕРєРё */
 	char etr[100] = {0};
 	strcpy(etr,str1.c_str());
 	strupr(etr);
@@ -2976,7 +2976,7 @@ void Remove_From_Source_Code(string str1, string str2, string str3, string str4,
 		WinText.erase(find_pos,str6.length());
 		InvolvedInclude.erase(InvolvedInclude.begin() + num1);
 	}
-	/* Переводим в нижний регистр строки */
+	/* РџРµСЂРµРІРѕРґРёРј РІ РЅРёР¶РЅРёР№ СЂРµРіРёСЃС‚СЂ СЃС‚СЂРѕРєРё */
 	strcpy(etr,str1.c_str());
 	strlwr(etr);
 	str1 = etr;
@@ -3042,7 +3042,7 @@ void Remove_From_Source_Code(string str1, string str2, string str3, string str4,
 	UsedIncludes();
 }
 
-/* Добавление Include в исходный код (include "folder\*.inc" or include "*.inc") */
+/* Р”РѕР±Р°РІР»РµРЅРёРµ Include РІ РёСЃС…РѕРґРЅС‹Р№ РєРѕРґ (include "folder\*.inc" or include "*.inc") */
 void Added_To_The_Source_Code(string Name_Added_Include) 
 {
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
@@ -3056,11 +3056,11 @@ void Added_To_The_Source_Code(string Name_Added_Include)
 	delete []WindowTex;
 }
 
-/* Освобождение памяти */
+/* РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё */
 void DelNew() 
 {
 
-	TrayMessage(ParentWindow->hWnd, NIM_DELETE, 0, 0, 0); /* Перед закрытием приложения удаляем иконку из трея */
+	TrayMessage(ParentWindow->hWnd, NIM_DELETE, 0, 0, 0); /* РџРµСЂРµРґ Р·Р°РєСЂС‹С‚РёРµРј РїСЂРёР»РѕР¶РµРЅРёСЏ СѓРґР°Р»СЏРµРј РёРєРѕРЅРєСѓ РёР· С‚СЂРµСЏ */
 
 	if (ParentWindow) delete ParentWindow;
 	if (TabControl) delete TabControl;
@@ -3074,26 +3074,26 @@ void DelNew()
 	ReleaseMutex(CProg);
 }
 
-/* Компиляция */
+/* РљРѕРјРїРёР»СЏС†РёСЏ */
 void Compile() 
 {
 	FileSave();
 
-	SECURITY_ATTRIBUTES Sec_Atr; /* Структура безопасности для пайпа */
+	SECURITY_ATTRIBUTES Sec_Atr; /* РЎС‚СЂСѓРєС‚СѓСЂР° Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё РґР»СЏ РїР°Р№РїР° */
 	ZeroMemory(&Sec_Atr,sizeof(Sec_Atr));
 	Sec_Atr.nLength = sizeof(Sec_Atr);
-	Sec_Atr.bInheritHandle = TRUE; /* Дескриптор будет унаследован дочерним процессом */
+	Sec_Atr.bInheritHandle = TRUE; /* Р”РµСЃРєСЂРёРїС‚РѕСЂ Р±СѓРґРµС‚ СѓРЅР°СЃР»РµРґРѕРІР°РЅ РґРѕС‡РµСЂРЅРёРј РїСЂРѕС†РµСЃСЃРѕРј */
 	
-	HANDLE han_stdin, han_stdout; /* Дескрипторы пайпа */						
-	string	path_to_the_exe, /* В строке будет только путь к файлу, открытому в активной вкладке */
+	HANDLE han_stdin, han_stdout; /* Р”РµСЃРєСЂРёРїС‚РѕСЂС‹ РїР°Р№РїР° */						
+	string	path_to_the_exe, /* Р’ СЃС‚СЂРѕРєРµ Р±СѓРґРµС‚ С‚РѕР»СЊРєРѕ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ, РѕС‚РєСЂС‹С‚РѕРјСѓ РІ Р°РєС‚РёРІРЅРѕР№ РІРєР»Р°РґРєРµ */
 			path_and_name,
-			full_path_to_the_exe, /* Полный путь к компилятору с названием и расширением */
+			full_path_to_the_exe, /* РџРѕР»РЅС‹Р№ РїСѓС‚СЊ Рє РєРѕРјРїРёР»СЏС‚РѕСЂСѓ СЃ РЅР°Р·РІР°РЅРёРµРј Рё СЂР°СЃС€РёСЂРµРЅРёРµРј */
 			lpOperation;
 
 	char path[150] = {0};
-	GetModuleFileName(NULL,path,150); /* Получаем полный путь к исполняемому файлу, в той же папке лежит компилятор.
-														Для запуска компилятора нужен полный путь к нему */
-	path_to_the_exe = path; /* Полученный путь заносим в string, что бы проще было получить только путь, без .exe */
+	GetModuleFileName(NULL,path,150); /* РџРѕР»СѓС‡Р°РµРј РїРѕР»РЅС‹Р№ РїСѓС‚СЊ Рє РёСЃРїРѕР»РЅСЏРµРјРѕРјСѓ С„Р°Р№Р»Сѓ, РІ С‚РѕР№ Р¶Рµ РїР°РїРєРµ Р»РµР¶РёС‚ РєРѕРјРїРёР»СЏС‚РѕСЂ.
+														Р”Р»СЏ Р·Р°РїСѓСЃРєР° РєРѕРјРїРёР»СЏС‚РѕСЂР° РЅСѓР¶РµРЅ РїРѕР»РЅС‹Р№ РїСѓС‚СЊ Рє РЅРµРјСѓ */
+	path_to_the_exe = path; /* РџРѕР»СѓС‡РµРЅРЅС‹Р№ РїСѓС‚СЊ Р·Р°РЅРѕСЃРёРј РІ string, С‡С‚Рѕ Р±С‹ РїСЂРѕС‰Рµ Р±С‹Р»Рѕ РїРѕР»СѓС‡РёС‚СЊ С‚РѕР»СЊРєРѕ РїСѓС‚СЊ, Р±РµР· .exe */
 	path_and_name = TabNumber[counter].FileInfo; 
 	int posit = path_to_the_exe.rfind("\\");
 	path_to_the_exe.erase(posit + 1,path_to_the_exe.length());
@@ -3101,14 +3101,14 @@ void Compile()
 	path_and_name.erase(pos_point + 1,path_and_name.length());
 	path_and_name += "EXE";
 	
-	full_path_to_the_exe += path_to_the_exe + "FASM.EXE"; /*  Полный путь к компилятору */
+	full_path_to_the_exe += path_to_the_exe + "FASM.EXE"; /*  РџРѕР»РЅС‹Р№ РїСѓС‚СЊ Рє РєРѕРјРїРёР»СЏС‚РѕСЂСѓ */
 
-	/* Параметры с которыми будет запущен компилятор */
+	/* РџР°СЂР°РјРµС‚СЂС‹ СЃ РєРѕС‚РѕСЂС‹РјРё Р±СѓРґРµС‚ Р·Р°РїСѓС‰РµРЅ РєРѕРјРїРёР»СЏС‚РѕСЂ */
 	lpOperation += "\"" 
 				+ full_path_to_the_exe 
 				+ "\" \"" 
 				+ TabNumber[counter].FileInfo 
-				+ "\""; /* Путь к файлу .asm с названием и расширением, и имя файла .exe */
+				+ "\""; /* РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ .asm СЃ РЅР°Р·РІР°РЅРёРµРј Рё СЂР°СЃС€РёСЂРµРЅРёРµРј, Рё РёРјСЏ С„Р°Р№Р»Р° .exe */
 
 	if(ID_RUN) 
 	{
@@ -3155,7 +3155,7 @@ void Compile()
 	CloseHandle(pInfo.hThread);
 }
 
-/* Функция помещает иконку приложения в трей */
+/* Р¤СѓРЅРєС†РёСЏ РїРѕРјРµС‰Р°РµС‚ РёРєРѕРЅРєСѓ РїСЂРёР»РѕР¶РµРЅРёСЏ РІ С‚СЂРµР№ */
 BOOL TrayMessage (HWND hWnd, DWORD dwMessage, UINT uID, HICON hIcon, PSTR pszTip) 
 { 
 	BOOL res; 
@@ -3179,7 +3179,7 @@ BOOL TrayMessage (HWND hWnd, DWORD dwMessage, UINT uID, HICON hIcon, PSTR pszTip
 	return res; 
 }
 
-/* Функция вызывает диалог сохранения файла */
+/* Р¤СѓРЅРєС†РёСЏ РІС‹Р·С‹РІР°РµС‚ РґРёР°Р»РѕРі СЃРѕС…СЂР°РЅРµРЅРёСЏ С„Р°Р№Р»Р° */
 void DLGSAVEFILE() 
 {
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
@@ -3248,7 +3248,7 @@ void FileSave()
 	}
 }
 
-/* Поток для обновления дерева */
+/* РџРѕС‚РѕРє РґР»СЏ РѕР±РЅРѕРІР»РµРЅРёСЏ РґРµСЂРµРІР° */
 DWORD WINAPI Thread_for_the_TreeView(LPVOID lpVoid) 
 {
 	int flag = (int)lpVoid;
@@ -3269,18 +3269,18 @@ DWORD WINAPI Thread_for_the_TreeView(LPVOID lpVoid)
 	return 0;
 }
 
-/* подсветка синтаксиса */
+/* РїРѕРґСЃРІРµС‚РєР° СЃРёРЅС‚Р°РєСЃРёСЃР° */
 void Syntax_Highlight() {
 
 	SendEditor(SCI_SETMARGINTYPEN, 0, SC_MARGIN_NUMBER);
 	SendEditor(SCI_SETMARGINMASKN, 0, SC_MARGIN_NUMBER);
 	SendEditor(SCI_SETMARGINWIDTHN, SC_MARGIN_NUMBER, 7);
-	SendEditor(SCI_STYLESETFORE, STYLE_LINENUMBER, rvalue.GetRGBValueFromIni("line_number")); /* Цвет LINENUMBERFORE */
-	SendEditor(SCI_STYLESETBACK, STYLE_LINENUMBER, rvalue.GetRGBValueFromIni("line_number_background")); /* Цвет LINENUMBERBACK */
-	SendEditor(SCI_STYLESETFONT, STYLE_LINENUMBER, reinterpret_cast<LPARAM>("Courier New")); /* Шрифт MARGIN_NUMBER */
-	SendEditor(SCI_STYLESETSIZE, STYLE_LINENUMBER, 11); /* Размер шрифта MARGIN_NUMBER */
+	SendEditor(SCI_STYLESETFORE, STYLE_LINENUMBER, rvalue.GetRGBValueFromIni("line_number")); /* Р¦РІРµС‚ LINENUMBERFORE */
+	SendEditor(SCI_STYLESETBACK, STYLE_LINENUMBER, rvalue.GetRGBValueFromIni("line_number_background")); /* Р¦РІРµС‚ LINENUMBERBACK */
+	SendEditor(SCI_STYLESETFONT, STYLE_LINENUMBER, reinterpret_cast<LPARAM>("Courier New")); /* РЁСЂРёС„С‚ MARGIN_NUMBER */
+	SendEditor(SCI_STYLESETSIZE, STYLE_LINENUMBER, 11); /* Р Р°Р·РјРµСЂ С€СЂРёС„С‚Р° MARGIN_NUMBER */
 
-	/* Параметры текста для выделенных парных скобок */
+	/* РџР°СЂР°РјРµС‚СЂС‹ С‚РµРєСЃС‚Р° РґР»СЏ РІС‹РґРµР»РµРЅРЅС‹С… РїР°СЂРЅС‹С… СЃРєРѕР±РѕРє */
 	SendEditor(SCI_STYLESETFORE,STYLE_BRACELIGHT,RGB(70,130,180));
 	SendEditor(SCI_STYLESETBACK,STYLE_BRACELIGHT,RGB(253,245,230)); 
 	SendEditor(SCI_STYLESETFONT,STYLE_BRACELIGHT,reinterpret_cast<LPARAM>("Courier New")); 
@@ -3294,19 +3294,19 @@ void Syntax_Highlight() {
 	SendEditor(SCI_SETMARGINTYPEN,1,SC_MARGIN_SYMBOL);
 	SendEditor(SCI_SETMARGINMASKN,1,(1<<MARK_BOOKMARK));
 	SendEditor(SCI_SETMARGINWIDTHN,1,20);
-	SendEditor(SCI_SETMARGINSENSITIVEN,1,TRUE);  /* Чувствительность */
+	SendEditor(SCI_SETMARGINSENSITIVEN,1,TRUE);  /* Р§СѓРІСЃС‚РІРёС‚РµР»СЊРЅРѕСЃС‚СЊ */
 	SendEditor(SCI_SETFOLDMARGINCOLOUR,1,RGB(253,245,230));
 
 	SendEditor(SCI_MARKERDEFINEPIXMAP, MARK_BOOKMARK, (LPARAM)breakpoint_rounded_blue_inverted2_xpm);
 	
-	SendEditor(SCI_SETCARETLINEVISIBLE,1,1); /* Инициализация CARETLINEVISIBLE */
-	SendEditor(SCI_SETCARETLINEBACK,RGB(253,245,230),1); /* Цвет CARETLINEVISIBLE */
+	SendEditor(SCI_SETCARETLINEVISIBLE,1,1); /* РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ CARETLINEVISIBLE */
+	SendEditor(SCI_SETCARETLINEBACK,RGB(253,245,230),1); /* Р¦РІРµС‚ CARETLINEVISIBLE */
 
-	SendEditor(SCI_SETSELFORE,1,RGB(0,104,139)); /* Цвет SELFORE */
-	SendEditor(SCI_SETSELBACK,1,RGB(230,230,250)); /* Цвет SELBACK */
+	SendEditor(SCI_SETSELFORE,1,RGB(0,104,139)); /* Р¦РІРµС‚ SELFORE */
+	SendEditor(SCI_SETSELBACK,1,RGB(230,230,250)); /* Р¦РІРµС‚ SELBACK */
 
-	SendEditor(SCI_SETHOTSPOTACTIVEFORE,true,RGB(0,104,139)); /* Цвет ADDITIONALSELFORE */
-	SendEditor(SCI_SETHOTSPOTACTIVEBACK,true,RGB(124,252,0)); /* Цвет ADDITIONALSELBACK */
+	SendEditor(SCI_SETHOTSPOTACTIVEFORE,true,RGB(0,104,139)); /* Р¦РІРµС‚ ADDITIONALSELFORE */
+	SendEditor(SCI_SETHOTSPOTACTIVEBACK,true,RGB(124,252,0)); /* Р¦РІРµС‚ ADDITIONALSELBACK */
 
 	SendEditor(SCI_SETLEXER, SCLEX_ASM, 0);
 	SendEditor(SCI_STYLESETCHARACTERSET,0,SC_CHARSET_RUSSIAN);
@@ -3330,33 +3330,33 @@ void Syntax_Highlight() {
 	SendEditor(SCI_STYLESETBOLD,SCE_ASM_REGISTER,SC_WEIGHT_BOLD);
 
 	SendEditor(SCI_STYLESETFORE,SCE_ASM_CHARACTER,RGB(205,85,85)); /* \'*/
-	SendEditor(SCI_STYLESETFONT,SCE_ASM_CHARACTER,reinterpret_cast<LPARAM>("Courier New")); /* \' - шрифт */
-	SendEditor(SCI_STYLESETSIZE,SCE_ASM_CHARACTER,10); /* \' - размер шрифта */
+	SendEditor(SCI_STYLESETFONT,SCE_ASM_CHARACTER,reinterpret_cast<LPARAM>("Courier New")); /* \' - С€СЂРёС„С‚ */
+	SendEditor(SCI_STYLESETSIZE,SCE_ASM_CHARACTER,10); /* \' - СЂР°Р·РјРµСЂ С€СЂРёС„С‚Р° */
 	SendEditor(SCI_STYLESETBOLD,SCE_ASM_CHARACTER,SC_WEIGHT_BOLD);
 
-	SendEditor(SCI_STYLESETFORE,SCE_ASM_IDENTIFIER, rvalue.GetRGBValueFromIni("default_text")); /* Текст по умолчанию */
+	SendEditor(SCI_STYLESETFORE,SCE_ASM_IDENTIFIER, rvalue.GetRGBValueFromIni("default_text")); /* РўРµРєСЃС‚ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ */
 	SendEditor(SCI_STYLESETFONT,SCE_ASM_IDENTIFIER,reinterpret_cast<LPARAM>("Courier New")); 
 	SendEditor(SCI_STYLESETSIZE,SCE_ASM_IDENTIFIER,10); 
 	SendEditor(SCI_STYLESETBOLD,SCE_ASM_IDENTIFIER,SC_WEIGHT_BOLD);
 
-	SendEditor(SCI_STYLESETFORE,SCE_ASM_NUMBER, rvalue.GetRGBValueFromIni("numbers")); /* Числа */
-	SendEditor(SCI_STYLESETFONT,SCE_ASM_NUMBER,reinterpret_cast<LPARAM>("Courier New")); /* Числа - шрифт */
-	SendEditor(SCI_STYLESETSIZE,SCE_ASM_NUMBER,10); /* Числа - размер шрифта */
+	SendEditor(SCI_STYLESETFORE,SCE_ASM_NUMBER, rvalue.GetRGBValueFromIni("numbers")); /* Р§РёСЃР»Р° */
+	SendEditor(SCI_STYLESETFONT,SCE_ASM_NUMBER,reinterpret_cast<LPARAM>("Courier New")); /* Р§РёСЃР»Р° - С€СЂРёС„С‚ */
+	SendEditor(SCI_STYLESETSIZE,SCE_ASM_NUMBER,10); /* Р§РёСЃР»Р° - СЂР°Р·РјРµСЂ С€СЂРёС„С‚Р° */
 	SendEditor(SCI_STYLESETBOLD,SCE_ASM_NUMBER,SC_WEIGHT_BOLD);
 
 	SendEditor(SCI_STYLESETFORE,SCE_ASM_COMMENT,RGB(255,140,105)); /* ; */
-	SendEditor(SCI_STYLESETFONT,SCE_ASM_COMMENT,reinterpret_cast<LPARAM>("Courier New")); /* ; - шрифт */
-	SendEditor(SCI_STYLESETSIZE,SCE_ASM_COMMENT,10); /* ; - размер шрифта */
+	SendEditor(SCI_STYLESETFONT,SCE_ASM_COMMENT,reinterpret_cast<LPARAM>("Courier New")); /* ; - С€СЂРёС„С‚ */
+	SendEditor(SCI_STYLESETSIZE,SCE_ASM_COMMENT,10); /* ; - СЂР°Р·РјРµСЂ С€СЂРёС„С‚Р° */
 	SendEditor(SCI_STYLESETBOLD,SCE_ASM_COMMENT,SC_WEIGHT_BOLD);
 
 	SendEditor(SCI_STYLESETFORE,SCE_ASM_OPERATOR,RGB(71,60,139)); /* (){}[]^&*%!# */
-	SendEditor(SCI_STYLESETFONT,SCE_ASM_OPERATOR,reinterpret_cast<LPARAM>("Courier New")); /* (){}[]^&*%!# - шрифт */
-	SendEditor(SCI_STYLESETSIZE,SCE_ASM_OPERATOR,10); /* (){}[]^&*%!# - размер шрифта */
+	SendEditor(SCI_STYLESETFONT,SCE_ASM_OPERATOR,reinterpret_cast<LPARAM>("Courier New")); /* (){}[]^&*%!# - С€СЂРёС„С‚ */
+	SendEditor(SCI_STYLESETSIZE,SCE_ASM_OPERATOR,10); /* (){}[]^&*%!# - СЂР°Р·РјРµСЂ С€СЂРёС„С‚Р° */
 	SendEditor(SCI_STYLESETBOLD,SCE_ASM_OPERATOR,SC_WEIGHT_BOLD);
 
 	SendEditor(SCI_STYLESETFORE,SCE_ASM_STRING,RGB(205,85,85)); /* \" */
-	SendEditor(SCI_STYLESETFONT,SCE_ASM_STRING,reinterpret_cast<LPARAM>("Courier New")); /* \" - шрифт */
-	SendEditor(SCI_STYLESETSIZE,SCE_ASM_STRING,10); /* \" - размер шрифта */
+	SendEditor(SCI_STYLESETFONT,SCE_ASM_STRING,reinterpret_cast<LPARAM>("Courier New")); /* \" - С€СЂРёС„С‚ */
+	SendEditor(SCI_STYLESETSIZE,SCE_ASM_STRING,10); /* \" - СЂР°Р·РјРµСЂ С€СЂРёС„С‚Р° */
 	SendEditor(SCI_STYLESETBOLD,SCE_ASM_STRING,SC_WEIGHT_BOLD);
 
 	SendEditor(SCI_STYLESETFORE,SCE_ASM_DEFAULT,RGB(71,60,139)); /* {} */
@@ -3364,7 +3364,7 @@ void Syntax_Highlight() {
 	SendEditor(SCI_STYLESETSIZE,SCE_ASM_DEFAULT,10); 
 	SendEditor(SCI_STYLESETBOLD,SCE_ASM_DEFAULT,SC_WEIGHT_BOLD);
 
-	/* Поле для свёртки текста */
+	/* РџРѕР»Рµ РґР»СЏ СЃРІС‘СЂС‚РєРё С‚РµРєСЃС‚Р° */
     SendEditor(SCI_SETMARGINMASKN,2, SC_MASK_FOLDERS);
     SendEditor(SCI_SETMARGINWIDTHN, 2, 11); 
     SendEditor(SCI_SETMARGINSENSITIVEN, 2, TRUE);
@@ -3385,7 +3385,7 @@ void Syntax_Highlight() {
     
     SendEditor(SCI_SETFOLDFLAGS, 16, 0);
 
-	SendEditor(SCI_COLOURISE,0,-1); /* Перерисовка */
+	SendEditor(SCI_COLOURISE,0,-1); /* РџРµСЂРµСЂРёСЃРѕРІРєР° */
 }
 
 /* /File/Save all/ */
@@ -3400,7 +3400,7 @@ void FileSaveALL(int to_rem)
 	TabCtrl_SetCurSel(TabControl->hWnd,to_rem);
 }
 
-/* Функция вызывает диалог открытия файла */
+/* Р¤СѓРЅРєС†РёСЏ РІС‹Р·С‹РІР°РµС‚ РґРёР°Р»РѕРі РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р° */
 void DLGOPENFILE() 
 {
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
@@ -3431,7 +3431,7 @@ void DLGOPENFILE()
 	CloseHandle(ParentWindow->hFile);
 }
 
-/* Функция открывает файл */
+/* Р¤СѓРЅРєС†РёСЏ РѕС‚РєСЂС‹РІР°РµС‚ С„Р°Р№Р» */
 void FileOpen() 
 {
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
@@ -3457,7 +3457,7 @@ void FileOpen()
 					TabNumber[tN].tabitem.pszText = (LPSTR)TabNumber[tN].BufferName.c_str();
 					TabNumber[tN].tabitem.cchTextMax = lstrlen((LPSTR)TabNumber[tN].BufferName.c_str());
 				}
-					TabCtrl_SetItem(TabControl->hWnd,counter,&TabNumber[counter].tabitem); // Обновляем вкладку;
+					TabCtrl_SetItem(TabControl->hWnd,counter,&TabNumber[counter].tabitem); // РћР±РЅРѕРІР»СЏРµРј РІРєР»Р°РґРєСѓ;
 					TabCtrl_HighlightItem(TabControl->hWnd,counter,0);
 			} 
 			else 
@@ -3488,12 +3488,12 @@ void FileOpen()
 	}
 }
 
-/* Открывает файл, принимает путь к файлу*/
+/* РћС‚РєСЂС‹РІР°РµС‚ С„Р°Р№Р», РїСЂРёРЅРёРјР°РµС‚ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ*/
 void OpeningFile(string File_Path) 
 {
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
 	tmp = 1;
-	TitleBuf = File_Path; /* Получаем имя файла с расширением */
+	TitleBuf = File_Path; /* РџРѕР»СѓС‡Р°РµРј РёРјСЏ С„Р°Р№Р»Р° СЃ СЂР°СЃС€РёСЂРµРЅРёРµРј */
 	int overlap_ = Overlap(TitleBuf);
 	if(overlap_ != 8) 
 	{
@@ -3538,7 +3538,7 @@ void OpeningFile(string File_Path)
 						TabNumber[tN].tabitem.pszText = (LPSTR)TabNumber[tN].BufferName.c_str();
 						TabNumber[tN].tabitem.cchTextMax = lstrlen((LPSTR)TabNumber[tN].BufferName.c_str());
 					}
-					TabCtrl_SetItem(TabControl->hWnd,counter,&TabNumber[counter].tabitem); // Обновляем вкладку;
+					TabCtrl_SetItem(TabControl->hWnd,counter,&TabNumber[counter].tabitem); // РћР±РЅРѕРІР»СЏРµРј РІРєР»Р°РґРєСѓ;
 					TabCtrl_HighlightItem(TabControl->hWnd,counter,0);
 				} 
 				else
@@ -3581,38 +3581,38 @@ void OpeningFile(string File_Path)
 	SetFocus(TabNumber[counter].hwndScintilla);
 } 
 
-/*Функция удаляет активную вкладку и её содержимое.
-В том чесле удаляется элемент вектора соответствующий
-номеру удалённой вкладки. Фокус переводится на вкладку
-с индексом [0].*/
+/*Р¤СѓРЅРєС†РёСЏ СѓРґР°Р»СЏРµС‚ Р°РєС‚РёРІРЅСѓСЋ РІРєР»Р°РґРєСѓ Рё РµС‘ СЃРѕРґРµСЂР¶РёРјРѕРµ.
+Р’ С‚РѕРј С‡РµСЃР»Рµ СѓРґР°Р»СЏРµС‚СЃСЏ СЌР»РµРјРµРЅС‚ РІРµРєС‚РѕСЂР° СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№
+РЅРѕРјРµСЂСѓ СѓРґР°Р»С‘РЅРЅРѕР№ РІРєР»Р°РґРєРё. Р¤РѕРєСѓСЃ РїРµСЂРµРІРѕРґРёС‚СЃСЏ РЅР° РІРєР»Р°РґРєСѓ
+СЃ РёРЅРґРµРєСЃРѕРј [0].*/
 void CloseTab() 
 {
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
-	/* Удаляем содержимое активной вкладки */
+	/* РЈРґР°Р»СЏРµРј СЃРѕРґРµСЂР¶РёРјРѕРµ Р°РєС‚РёРІРЅРѕР№ РІРєР»Р°РґРєРё */
 	DestroyWindow(TabNumber[counter].hwndScintilla);
 	DestroyWindow(TabNumber[counter].Output);
-	/* Удаляем вкладку */
+	/* РЈРґР°Р»СЏРµРј РІРєР»Р°РґРєСѓ */
 	TabCtrl_DeleteItem(TabControl->hWnd,counter);
-	/* Удаляем элемент вектора соответсвующий номеру удалённой вкладки */
+	/* РЈРґР°Р»СЏРµРј СЌР»РµРјРµРЅС‚ РІРµРєС‚РѕСЂР° СЃРѕРѕС‚РІРµС‚СЃРІСѓСЋС‰РёР№ РЅРѕРјРµСЂСѓ СѓРґР°Р»С‘РЅРЅРѕР№ РІРєР»Р°РґРєРё */
 	TabNumber.erase(TabNumber.begin()+counter);
-	/*Поскольку после удаления элементов в конце вектора остаётся занята память,
-	которую они занимали, проделывается такой фокус: создаётся временная копия 
-	вектора TabNumber, в которую копируются все оставшиеся элементы TabNumber, 
-	причём памяти эта копия отъедает ровно на counter элементов, после чего новый
-	кусочек памяти передаётся во владение самому TabNumber, а старый кусочек - времянке.
-	Времянка тут же уничтожается, а в векторе TabNumber не отъедается неиспользованная память.
-	Разумеется, это имеет смысл лишь в том случае, если мы не собираемся расширять TabNumber
-	в дальнейшем.*/
+	/*РџРѕСЃРєРѕР»СЊРєСѓ РїРѕСЃР»Рµ СѓРґР°Р»РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ РІ РєРѕРЅС†Рµ РІРµРєС‚РѕСЂР° РѕСЃС‚Р°С‘С‚СЃСЏ Р·Р°РЅСЏС‚Р° РїР°РјСЏС‚СЊ,
+	РєРѕС‚РѕСЂСѓСЋ РѕРЅРё Р·Р°РЅРёРјР°Р»Рё, РїСЂРѕРґРµР»С‹РІР°РµС‚СЃСЏ С‚Р°РєРѕР№ С„РѕРєСѓСЃ: СЃРѕР·РґР°С‘С‚СЃСЏ РІСЂРµРјРµРЅРЅР°СЏ РєРѕРїРёСЏ 
+	РІРµРєС‚РѕСЂР° TabNumber, РІ РєРѕС‚РѕСЂСѓСЋ РєРѕРїРёСЂСѓСЋС‚СЃСЏ РІСЃРµ РѕСЃС‚Р°РІС€РёРµСЃСЏ СЌР»РµРјРµРЅС‚С‹ TabNumber, 
+	РїСЂРёС‡С‘Рј РїР°РјСЏС‚Рё СЌС‚Р° РєРѕРїРёСЏ РѕС‚СЉРµРґР°РµС‚ СЂРѕРІРЅРѕ РЅР° counter СЌР»РµРјРµРЅС‚РѕРІ, РїРѕСЃР»Рµ С‡РµРіРѕ РЅРѕРІС‹Р№
+	РєСѓСЃРѕС‡РµРє РїР°РјСЏС‚Рё РїРµСЂРµРґР°С‘С‚СЃСЏ РІРѕ РІР»Р°РґРµРЅРёРµ СЃР°РјРѕРјСѓ TabNumber, Р° СЃС‚Р°СЂС‹Р№ РєСѓСЃРѕС‡РµРє - РІСЂРµРјСЏРЅРєРµ.
+	Р’СЂРµРјСЏРЅРєР° С‚СѓС‚ Р¶Рµ СѓРЅРёС‡С‚РѕР¶Р°РµС‚СЃСЏ, Р° РІ РІРµРєС‚РѕСЂРµ TabNumber РЅРµ РѕС‚СЉРµРґР°РµС‚СЃСЏ РЅРµРёСЃРїРѕР»СЊР·РѕРІР°РЅРЅР°СЏ РїР°РјСЏС‚СЊ.
+	Р Р°Р·СѓРјРµРµС‚СЃСЏ, СЌС‚Рѕ РёРјРµРµС‚ СЃРјС‹СЃР» Р»РёС€СЊ РІ С‚РѕРј СЃР»СѓС‡Р°Рµ, РµСЃР»Рё РјС‹ РЅРµ СЃРѕР±РёСЂР°РµРјСЃСЏ СЂР°СЃС€РёСЂСЏС‚СЊ TabNumber
+	РІ РґР°Р»СЊРЅРµР№С€РµРј.*/
 	vector<tabcounter>(TabNumber).swap(TabNumber);
 
-	/* Устанавливаем фокус на вкладку с индексом [0] и показываем содержимое вкладки */
+	/* РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„РѕРєСѓСЃ РЅР° РІРєР»Р°РґРєСѓ СЃ РёРЅРґРµРєСЃРѕРј [0] Рё РїРѕРєР°Р·С‹РІР°РµРј СЃРѕРґРµСЂР¶РёРјРѕРµ РІРєР»Р°РґРєРё */
 	TabCtrl_SetCurSel(TabControl->hWnd,0);
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
 	//TabNumber[counter].tabitem.pszText = (LPSTR)TabNumber[counter].BufferName.c_str();
 	ShowWindow(TabNumber[counter].hwndScintilla,SW_SHOW);
 	ShowWindow(TabNumber[counter].Output,SW_SHOW);
 	int count = TabCtrl_GetCurSel(TabControl_TrV->hWnd);
-	if(Flag_for_the_TreeView != 1) CreateThread(0,0,Thread_for_the_TreeView,(LPVOID)count,0,0); /* Потока обновления дерева */
+	if(Flag_for_the_TreeView != 1) CreateThread(0,0,Thread_for_the_TreeView,(LPVOID)count,0,0); /* РџРѕС‚РѕРєР° РѕР±РЅРѕРІР»РµРЅРёСЏ РґРµСЂРµРІР° */
 	if(count == 0) 
 	{
 		ShowWindow(TreeView_N->hWnd,SW_SHOW);
@@ -3625,20 +3625,20 @@ void CloseTab()
 	{
 		ShowWindow(TreeView_R->hWnd,SW_SHOW);
 	}
-	tN--; /* Cокращаем нумерацию вкладок в структуре TC_ITEM */
+	tN--; /* CРѕРєСЂР°С‰Р°РµРј РЅСѓРјРµСЂР°С†РёСЋ РІРєР»Р°РґРѕРє РІ СЃС‚СЂСѓРєС‚СѓСЂРµ TC_ITEM */
 }
 
-/* Функция создаёт новую вкладку, переводит на неё фокус 
-и показывает содержимое этой вкладки */
+/* Р¤СѓРЅРєС†РёСЏ СЃРѕР·РґР°С‘С‚ РЅРѕРІСѓСЋ РІРєР»Р°РґРєСѓ, РїРµСЂРµРІРѕРґРёС‚ РЅР° РЅРµС‘ С„РѕРєСѓСЃ 
+Рё РїРѕРєР°Р·С‹РІР°РµС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕР№ РІРєР»Р°РґРєРё */
 void NewTab() 
 {
-	/* Освобождаем часть мамяти */
+	/* РћСЃРІРѕР±РѕР¶РґР°РµРј С‡Р°СЃС‚СЊ РјР°РјСЏС‚Рё */
 	if (HwndScintilla) delete HwndScintilla;
 	if (Output_N) delete Output_N;
 	
-	tN++; /* Инкремент счётчика вкладок */	
+	tN++; /* РРЅРєСЂРµРјРµРЅС‚ СЃС‡С‘С‚С‡РёРєР° РІРєР»Р°РґРѕРє */	
 
-	/* Добавляем вкладку в TabConrol */
+	/* Р”РѕР±Р°РІР»СЏРµРј РІРєР»Р°РґРєСѓ РІ TabConrol */
 	TabCtrl_InsertItem(TabControl->hWnd,tN,&tabNum.tabitem);
 		
 	HwndScintilla = new Wnd(0,
@@ -3682,19 +3682,19 @@ void NewTab()
 		SendMessage(Output_N->hWnd,EM_SETCHARFORMAT,0,(LPARAM)&CharF);
 																			
 	TabNumber.push_back(tabNum); 
-	/* Скрываем содержимое предыдущей вкладки */
+	/* РЎРєСЂС‹РІР°РµРј СЃРѕРґРµСЂР¶РёРјРѕРµ РїСЂРµРґС‹РґСѓС‰РµР№ РІРєР»Р°РґРєРё */
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
 	ShowWindow(TabNumber[tN-1].Output,SW_HIDE);
 	ShowWindow(TabNumber[tN-1].hwndScintilla,SW_HIDE);
 
 	TabCtrl_SetCurSel(TabControl->hWnd,tN);
-	/* Показываем содержимое созданной вкладки */
+	/* РџРѕРєР°Р·С‹РІР°РµРј СЃРѕРґРµСЂР¶РёРјРѕРµ СЃРѕР·РґР°РЅРЅРѕР№ РІРєР»Р°РґРєРё */
 	ShowWindow(TabNumber[tN].Output,SW_SHOWNOACTIVATE);
 	ShowWindow(TabNumber[tN].hwndScintilla,SW_SHOWNOACTIVATE);
 
 	Syntax_Highlight();
 
-	/* Задаём имя на шапке таба */
+	/* Р—Р°РґР°С‘Рј РёРјСЏ РЅР° С€Р°РїРєРµ С‚Р°Р±Р° */
 	FileName();
 	if(TabNumber[tN].BufferName.length() == 0) 
 	{
@@ -3707,7 +3707,7 @@ void NewTab()
 		TabNumber[tN].tabitem.cchTextMax = lstrlen((LPSTR)TabNumber[tN].BufferName.c_str());
 	}
 
-	TabCtrl_SetItem(TabControl->hWnd,tN,&TabNumber[tN].tabitem); /* Обновляем вкладку */
+	TabCtrl_SetItem(TabControl->hWnd,tN,&TabNumber[tN].tabitem); /* РћР±РЅРѕРІР»СЏРµРј РІРєР»Р°РґРєСѓ */
 	TabCtrl_HighlightItem(TabControl->hWnd,tN,0);
 
 	int count = TabCtrl_GetCurSel(TabControl_TrV->hWnd);
@@ -3727,7 +3727,7 @@ void NewTab()
 	Inc_();
 }
 
-/* Функция получает имя файла с его расширением из пути к файлу */
+/* Р¤СѓРЅРєС†РёСЏ РїРѕР»СѓС‡Р°РµС‚ РёРјСЏ С„Р°Р№Р»Р° СЃ РµРіРѕ СЂР°СЃС€РёСЂРµРЅРёРµРј РёР· РїСѓС‚Рё Рє С„Р°Р№Р»Сѓ */
 void FileName() 
 {
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
@@ -3735,12 +3735,12 @@ void FileName()
 	TabNumber[counter].BufferName = TitleBuf.substr(position+1,TitleBuf.length()-position);
 }
 
-/* Функция отправляет открытый файл на печать, на принтер по умолчанию */
+/* Р¤СѓРЅРєС†РёСЏ РѕС‚РїСЂР°РІР»СЏРµС‚ РѕС‚РєСЂС‹С‚С‹Р№ С„Р°Р№Р» РЅР° РїРµС‡Р°С‚СЊ, РЅР° РїСЂРёРЅС‚РµСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ */
 int PrintFileToPrinter(char* sFileName) 
 {
 	int ret = 0;
 	HANDLE hPrinter;
-	DOC_INFO_1 DocInfo; // структуру документа, который будет напечатан
+	DOC_INFO_1 DocInfo; // СЃС‚СЂСѓРєС‚СѓСЂСѓ РґРѕРєСѓРјРµРЅС‚Р°, РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РЅР°РїРµС‡Р°С‚Р°РЅ
 	DWORD dwJob;
 	DWORD dwBytesWritten;
 	char buffer[4096];
@@ -3804,7 +3804,7 @@ void FilePrint()
 					TabNumber[counter].tabitem.pszText = (LPSTR)TabNumber[tN].BufferName.c_str();
 					TabNumber[counter].tabitem.cchTextMax = lstrlen((LPSTR)TabNumber[tN].BufferName.c_str());
 				}
-			TabCtrl_SetItem(TabControl->hWnd,counter,&TabNumber[counter].tabitem); // Обновляем вкладку;
+			TabCtrl_SetItem(TabControl->hWnd,counter,&TabNumber[counter].tabitem); // РћР±РЅРѕРІР»СЏРµРј РІРєР»Р°РґРєСѓ;
 			TabCtrl_GetItemRect(TabControl->hWnd,counter,&rctab);
 			SendMessage(TabControl->hWnd,WM_LBUTTONUP,rctab.left,rctab.top);
 			SetFocus(TabNumber[counter].hwndScintilla);
@@ -3818,7 +3818,7 @@ void FilePrint()
 	}
 }
 
-/* Функция закрывает активную вкладку /File/Close/ */
+/* Р¤СѓРЅРєС†РёСЏ Р·Р°РєСЂС‹РІР°РµС‚ Р°РєС‚РёРІРЅСѓСЋ РІРєР»Р°РґРєСѓ /File/Close/ */
 int FileClose(WPARAM wPar) 
 {
 	tabN = TabCtrl_GetItemCount(TabControl->hWnd);
@@ -3955,7 +3955,7 @@ int FileSaveAs() {
 				TabNumber[counter].tabitem.pszText = (LPSTR)TabNumber[counter].BufferName.c_str();
 				TabNumber[counter].tabitem.cchTextMax = lstrlen((LPSTR)TabNumber[counter].BufferName.c_str());
 			}
-		TabCtrl_SetItem(TabControl->hWnd,counter,&TabNumber[counter].tabitem); // Обновляем вкладку;
+		TabCtrl_SetItem(TabControl->hWnd,counter,&TabNumber[counter].tabitem); // РћР±РЅРѕРІР»СЏРµРј РІРєР»Р°РґРєСѓ;
 		TabCtrl_GetItemRect(TabControl->hWnd,counter,&rctab);
 		SendMessage(TabControl->hWnd,WM_LBUTTONUP,rctab.left,rctab.top);
 		TitleBuf = (""); 
@@ -3963,8 +3963,8 @@ int FileSaveAs() {
 	return 0;
 }
 
-/* Функция проверяет на совпадение пути файла который пользователь собирается
-открыть с уже открытыми, если будет совпадения файл открыт не будет */
+/* Р¤СѓРЅРєС†РёСЏ РїСЂРѕРІРµСЂСЏРµС‚ РЅР° СЃРѕРІРїР°РґРµРЅРёРµ РїСѓС‚Рё С„Р°Р№Р»Р° РєРѕС‚РѕСЂС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃРѕР±РёСЂР°РµС‚СЃСЏ
+РѕС‚РєСЂС‹С‚СЊ СЃ СѓР¶Рµ РѕС‚РєСЂС‹С‚С‹РјРё, РµСЃР»Рё Р±СѓРґРµС‚ СЃРѕРІРїР°РґРµРЅРёСЏ С„Р°Р№Р» РѕС‚РєСЂС‹С‚ РЅРµ Р±СѓРґРµС‚ */
 int Overlap(string path_) 
 {
 	for(int ol_ = 0; ol_ < TabNumber.size(); ol_++) 
@@ -3982,8 +3982,8 @@ void Toggle_a_bookmark(int Line) {
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
 	for(int cc_ = 0; cc_ < TabNumber[counter].break_points.size(); cc_++) 
 	{ 
-		/* Сравниваем с уже существующими закладками, чтобы узнать,
-		хочет пользователь добавить закладку или удалить уже существующую */
+		/* РЎСЂР°РІРЅРёРІР°РµРј СЃ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРјРё Р·Р°РєР»Р°РґРєР°РјРё, С‡С‚РѕР±С‹ СѓР·РЅР°С‚СЊ,
+		С…РѕС‡РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РґРѕР±Р°РІРёС‚СЊ Р·Р°РєР»Р°РґРєСѓ РёР»Рё СѓРґР°Р»РёС‚СЊ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓСЋС‰СѓСЋ */
 	   	if(TabNumber[counter].break_points.at(cc_) != Line) 
 		{
 			c_break = 0;
@@ -3991,17 +3991,17 @@ void Toggle_a_bookmark(int Line) {
 		} 
 		else 
 		{
-			c_break = 1; /* Если закладка в этой строке уже существует */
+			c_break = 1; /* Р•СЃР»Рё Р·Р°РєР»Р°РґРєР° РІ СЌС‚РѕР№ СЃС‚СЂРѕРєРµ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ */
 			per = cc_;
 			break;
 		}
 	}
-	if(c_break == 1) /* Удаляем закладку */
+	if(c_break == 1) /* РЈРґР°Р»СЏРµРј Р·Р°РєР»Р°РґРєСѓ */
 	{   
 		SendEditor(SCI_MARKERDELETE,Line,MARK_BOOKMARK);
 		TabNumber[counter].break_points.erase(TabNumber[counter].break_points.begin()+per);
 	} 
-	else /* Добавляем закладку */
+	else /* Р”РѕР±Р°РІР»СЏРµРј Р·Р°РєР»Р°РґРєСѓ */
 	{	
 		SendEditor(SCI_MARKERADD,Line,MARK_BOOKMARK);
 		TabNumber[counter].break_points.push_back(Line);
@@ -4096,7 +4096,7 @@ void Previous_Bookmark()
 	}
 }
 
-/* Функция добавляет новый проект */
+/* Р¤СѓРЅРєС†РёСЏ РґРѕР±Р°РІР»СЏРµС‚ РЅРѕРІС‹Р№ РїСЂРѕРµРєС‚ */
 void Add_Project(char *Name) 
 {
 	counter = TabCtrl_GetCurSel(TabControl->hWnd);
@@ -4118,14 +4118,14 @@ void Add_Project(char *Name)
 
 inline void Search_in_folder_SDK() {
 	char path[150] = {0};
-	GetModuleFileName(NULL,path,150); /* Получаем полный путь к исполняемому файлу, т.к. в той же папке лежит prototype.h */
-	string path_to_the_exe2 = path; /* Полученный путь заносим в string, что бы проще было получить только путь, без .exe */
+	GetModuleFileName(NULL,path,150); /* РџРѕР»СѓС‡Р°РµРј РїРѕР»РЅС‹Р№ РїСѓС‚СЊ Рє РёСЃРїРѕР»РЅСЏРµРјРѕРјСѓ С„Р°Р№Р»Сѓ, С‚.Рє. РІ С‚РѕР№ Р¶Рµ РїР°РїРєРµ Р»РµР¶РёС‚ prototype.h */
+	string path_to_the_exe2 = path; /* РџРѕР»СѓС‡РµРЅРЅС‹Р№ РїСѓС‚СЊ Р·Р°РЅРѕСЃРёРј РІ string, С‡С‚Рѕ Р±С‹ РїСЂРѕС‰Рµ Р±С‹Р»Рѕ РїРѕР»СѓС‡РёС‚СЊ С‚РѕР»СЊРєРѕ РїСѓС‚СЊ, Р±РµР· .exe */
 	int posit = path_to_the_exe2.rfind("\\");
 	path_to_the_exe2.erase(posit + 1,path_to_the_exe2.length());
 	path_to_the_exe2 += "prototype.h";
 	char path_to_the_inc_API[255] = {0};
 	strcpy(path_to_the_inc_API,path_to_the_exe2.c_str());
-	/* Читаем из файла */
+	/* Р§РёС‚Р°РµРј РёР· С„Р°Р№Р»Р° */
 	FILE * pFile,ptmp;
 	pFile = fopen(path_to_the_inc_API,"r");
 	long lSize;
@@ -4181,10 +4181,10 @@ void Inc_()
 		ShowWindow(TreeView_R->hWnd,SW_SHOW);
 		ShowWindow(AllInc_TrV->hWnd,SW_HIDE);
 	}
-	if(Flag_for_the_TreeView != 1) CreateThread(0,0,Thread_for_the_TreeView,(LPVOID)count,0,0); /* Поток обновления дерева */
+	if(Flag_for_the_TreeView != 1) CreateThread(0,0,Thread_for_the_TreeView,(LPVOID)count,0,0); /* РџРѕС‚РѕРє РѕР±РЅРѕРІР»РµРЅРёСЏ РґРµСЂРµРІР° */
 }
 
-/* Функция выствляет маркеры для свёртки текста */
+/* Р¤СѓРЅРєС†РёСЏ РІС‹СЃС‚РІР»СЏРµС‚ РјР°СЂРєРµСЂС‹ РґР»СЏ СЃРІС‘СЂС‚РєРё С‚РµРєСЃС‚Р° */
 void MarkersAdd() 
 {
 	int iLineCount = SendEditor(SCI_GETLINECOUNT,0,0);
@@ -4228,7 +4228,7 @@ void MarkersAdd()
 	}
 }
 
-/* Переход к выбранному элементу в CodeView */
+/* РџРµСЂРµС…РѕРґ Рє РІС‹Р±СЂР°РЅРЅРѕРјСѓ СЌР»РµРјРµРЅС‚Сѓ РІ CodeView */
 void Goto() 
 {
 	TVITEM tv_item;
@@ -4252,7 +4252,7 @@ void Goto()
 	}
 }
 
-/* Функция закрывает все вкладки, кроме активной */
+/* Р¤СѓРЅРєС†РёСЏ Р·Р°РєСЂС‹РІР°РµС‚ РІСЃРµ РІРєР»Р°РґРєРё, РєСЂРѕРјРµ Р°РєС‚РёРІРЅРѕР№ */
 void CloseAllButThis()
 {
 	int activetab = TabCtrl_GetCurSel(TabControl->hWnd);
@@ -4286,7 +4286,7 @@ void CloseAllButThis()
 	}
 }
 
-/* Функция закрывает все вкладки слева */
+/* Р¤СѓРЅРєС†РёСЏ Р·Р°РєСЂС‹РІР°РµС‚ РІСЃРµ РІРєР»Р°РґРєРё СЃР»РµРІР° */
 void CloseLeft()
 {
 	int activetab = TabCtrl_GetCurSel(TabControl->hWnd);
@@ -4317,7 +4317,7 @@ void CloseLeft()
 	}
 }
 
-/* Функция закрывает все вкладки справа */
+/* Р¤СѓРЅРєС†РёСЏ Р·Р°РєСЂС‹РІР°РµС‚ РІСЃРµ РІРєР»Р°РґРєРё СЃРїСЂР°РІР° */
 void CloseRight()
 {
 	int activetab = TabCtrl_GetCurSel(TabControl->hWnd);

@@ -1,4 +1,4 @@
-#include "General.h"
+п»ї#include "General.h"
 #include <D:\Desktop\Fasm\Fasm\scintilla\include\Scintilla.h>
 
 using namespace std;
@@ -23,7 +23,7 @@ void OperationsOnSelectedLines::CommentOutTheSelectedLines(HWND hWndScintilla)
 			ZeroMemory(seltext,t_l);
 			int sel = SendMessage(hWndScintilla, SCI_GETSELTEXT, 0, (LPARAM)seltext);
 			string comment_sel = seltext;
-			if(sel != 0) /* если есть выделенный текст */
+			if(sel != 0) /* РµСЃР»Рё РµСЃС‚СЊ РІС‹РґРµР»РµРЅРЅС‹Р№ С‚РµРєСЃС‚ */
 			{
 				int iter = 0;
 				if(comment_sel[iter] != '\t') comment_sel.insert(iter, ";");
@@ -37,12 +37,12 @@ void OperationsOnSelectedLines::CommentOutTheSelectedLines(HWND hWndScintilla)
 				while ((tmp_ = comment_sel.find('\n',tmp_))!=-1) {
 						do {
 							tmp_++;	
-							if(tmp_>=comment_sel.size()) break; /* если выйдет за диапазон */
+							if(tmp_>=comment_sel.size()) break; /* РµСЃР»Рё РІС‹Р№РґРµС‚ Р·Р° РґРёР°РїР°Р·РѕРЅ */
 						} while (comment_sel[tmp_] == '\t');	
 						comment_sel.insert(tmp_, ";");
 				} 
 				SendMessage(hWndScintilla, SCI_REPLACESEL, 0, (LPARAM)comment_sel.c_str());
-			} else { /* если нет выделенного текста, вставляем ; в позицию курсора */
+			} else { /* РµСЃР»Рё РЅРµС‚ РІС‹РґРµР»РµРЅРЅРѕРіРѕ С‚РµРєСЃС‚Р°, РІСЃС‚Р°РІР»СЏРµРј ; РІ РїРѕР·РёС†РёСЋ РєСѓСЂСЃРѕСЂР° */
 				comment_sel += ";";
 				SendMessage(hWndScintilla, SCI_REPLACESEL, 0, (LPARAM)comment_sel.c_str());
 			}
@@ -67,7 +67,7 @@ void OperationsOnSelectedLines::UncommentTheSelectedLines(HWND hWndScintilla)
 			ZeroMemory(seltext,t_l);
 			int sel = SendMessage(hWndScintilla, SCI_GETSELTEXT, 0, (LPARAM)seltext);
 			string comment_sel = seltext;
-			if(sel == 0) { /* если нет выделенного текста */
+			if(sel == 0) { /* РµСЃР»Рё РЅРµС‚ РІС‹РґРµР»РµРЅРЅРѕРіРѕ С‚РµРєСЃС‚Р° */
 				ZeroMemory(seltext,t_l);
 				SendMessage(hWndScintilla, SCI_GETCURLINE, t_l, (LPARAM)seltext);
 				string comment_sel = seltext;
@@ -81,7 +81,7 @@ void OperationsOnSelectedLines::UncommentTheSelectedLines(HWND hWndScintilla)
 					SendMessage(hWndScintilla, SCI_SETSEL, ttf.chrgText.cpMin, ttf.chrgText.cpMax);
 					SendMessage(hWndScintilla, SCI_REPLACESEL, 0, (LPARAM)comment_sel.c_str());
 				}
-			} else { /* если текст был выделен */
+			} else { /* РµСЃР»Рё С‚РµРєСЃС‚ Р±С‹Р» РІС‹РґРµР»РµРЅ */
 				int result_find = 0;
 				do {
 					result_find = comment_sel.find(";",result_find);
@@ -174,9 +174,9 @@ void OperationsOnSelectedLines::IncreaseIndent(HWND hWndScintilla)
 			int sel = SendMessage(hWndScintilla, SCI_GETSELTEXT, 0, (LPARAM)seltext);
 			string comment_sel = "\t";
 			comment_sel += seltext;
-			if(sel == 0) { /* если нет выделенного текста */
+			if(sel == 0) { /* РµСЃР»Рё РЅРµС‚ РІС‹РґРµР»РµРЅРЅРѕРіРѕ С‚РµРєСЃС‚Р° */
 				SendMessage(hWndScintilla, SCI_REPLACESEL, 0, (LPARAM)comment_sel.c_str());
-			} else { /* если текст был выделен */
+			} else { /* РµСЃР»Рё С‚РµРєСЃС‚ Р±С‹Р» РІС‹РґРµР»РµРЅ */
 				int tab_ = 1;
 				int result_find = 0;
 				do {
